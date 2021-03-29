@@ -89,7 +89,7 @@ h1 {
 	padding: 5px;
 	border-bottom: 3px solid #CBAD91;
 	text-align: left;
-	width: 50%;
+	width: 70%;
 	margin-bottom: 20px;
 }
 
@@ -108,5 +108,23 @@ h1 {
 	font-size: 17px;
 	font-weight: 700;
 	border: none;
+}
 
+.dayCheckbox {
+	color: #E5E5E5;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 6px 0px;
+}
+
+.dayCheckbox:hover {
+	color: #548A60;
+}
+
+.dayCheckbox:checked {
+	color: #548A60;
+}
+
+.checked {
+	color: #548A60 !important;
 }

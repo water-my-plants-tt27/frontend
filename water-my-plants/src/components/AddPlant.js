@@ -24,14 +24,13 @@ const PlantInfo = styled.div`
 `
 
 const WateringForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     margin-right: 40px;
 `
 
 
 const AddPlant = () => {
+
+    //TODO: add class checked to selected options
 
     return (
         <AddPlantContainer>
@@ -45,12 +44,34 @@ const AddPlant = () => {
                     <div>
                         <div className='needs'>Start Watering</div>
                         <WateringForm>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
-                            <label for="vehicle1"> I have a bike</label>
-                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car"/>
-                            <label for="vehicle2"> I have a car</label>
-                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"/>
-                            <label for="vehicle3"> I have a boat</label>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="monday" name="monday" value="monday"/>
+                                <label for="monday">Monday</label><br/>
+                            </div>
+                            <div className='dayCheckbox' >
+                               <input type="checkbox" id="tuesday" name="tuesday" value="tuesday"/>
+                                <label for="tuesday">Tuesday</label>
+                            </div>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="Wednesday" name="Wednesday" value="Wednesday"/>
+                                <label for="Wednesday">Wednesday</label>
+                            </div>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="Thursday" name="Thursday" value="Thursday"/>
+                                <label for="Thursday">Thursday</label>
+                            </div>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="Friday" name="Friday" value="Friday"/>
+                                <label for="Friday">Friday</label>
+                            </div>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="Saturday" name="Saturday" value="Saturday"/>
+                                <label for="Saturday">Saturday</label>
+                            </div>
+                            <div className='dayCheckbox' >
+                                <input type="checkbox" id="Sunday" name="Sunday" value="Sunday"/>
+                                <label for="Sunday">Sunday</label>
+                            </div>
                         </WateringForm>
                     </div>
                     <div>
