@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom'
 import MyPlants from './components/MyPlants'
 import Login from './components/Login'
 import Register from './components/Register';
+import NavMenu from './components/NavMenu';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
       </Route>
       <Route path='/register'>
         <Register />
+      </Route>
+      <Route path='/navMenu'>
+        <NavMenu />
       </Route>
     </div>
   );

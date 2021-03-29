@@ -35,7 +35,7 @@ export default function Register() {
     return (
         <div>
             <div>
-            <h1>BUDGE</h1>
+            <h1>Register</h1>
             <div className="formContainer">
                 <h3>Sign-Up</h3>
                 <form onSubmit={onSubmit}>
