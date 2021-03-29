@@ -60,3 +60,35 @@ h1 {
   font-weight: 700;
   line-height: 40px;
 }
+
+.accordion {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 200ms ease-out;
+}
+
+.open {
+	transition: all 200ms ease-in;
+	max-height: unset;
+}
+
+.plantName {
+	font-size: 18px;
+	font-weight: 700;
+	color: #224229;
+	text-align: left;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.plantSpecies {
+	font-size: 13px;
+	font-style: italic;
+	font-weight: 600;
+	color: #BCB6A6;
+	padding: 5px;
+	border-bottom: 3px solid #CBAD91;
+	text-align: left;
+	width: 50%;
+	margin-bottom: 20px;
+}

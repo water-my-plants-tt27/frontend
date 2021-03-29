@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
 
 //Component Import
-import AddPlant from './AddPlant'
+import SearchPlant from './SearchPlant'
 
 //STYLING
 const HeaderContainer = styled.div`
@@ -12,24 +12,31 @@ const HeaderContainer = styled.div`
     padding: 20px;
 `
 
+const AddPlantButton = styled.div`
+    cursor: pointer;
+    font-size: 17px;
+    color: #CBAD91;
+
+`
+
 const MyPlantsHeader = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const addPlantRef= useRef(null);
 
     const toggleAccordion = () => {
-        isOpen ? setIsOpen(false) : setIsOpen(true)
+        addPlantRef.current.classList.toggle('open')
     }
 
     return (
        <>
             <HeaderContainer>
                 <h1>My Plants</h1>
-                <div>
-                    <button onClick={() => toggleAccordion()}>Add a Plant +</button>
-                </div>
+                <AddPlantButton onClick={() => toggleAccordion()}>
+                    Add a Plant +
+                </AddPlantButton>
             </HeaderContainer>
-            {
-                isOpen ? <AddPlant /> : null
-            }
+            <div ref={addPlantRef} className='accordion'>
+                 <SearchPlant toggleAccordion={toggleAccordion}/>
+            </div>
         </>
     )
 }
