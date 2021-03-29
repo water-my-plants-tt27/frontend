@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 //Component Import
@@ -13,16 +13,23 @@ const HeaderContainer = styled.div`
 `
 
 const MyPlantsHeader = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleAccordion = () => {
+        isOpen ? setIsOpen(false) : setIsOpen(true)
+    }
 
     return (
        <>
             <HeaderContainer>
                 <h1>My Plants</h1>
                 <div>
-                    <button>Add a Plant +</button>
+                    <button onClick={() => toggleAccordion()}>Add a Plant +</button>
                 </div>
             </HeaderContainer>
-            <AddPlant />
+            {
+                isOpen ? <AddPlant /> : null
+            }
         </>
     )
 }
