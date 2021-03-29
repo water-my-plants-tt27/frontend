@@ -3,26 +3,31 @@ import styled from 'styled-components'
 
 //STYLING
 const AddPlantContainer = styled.div`
-    width: 50vw;
+    width: 40vw;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     border: 1px solid black;
 `
 
 const PlantInfoContainer = styled.div`
     border: 1px solid red;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    padding: 6px;
+    padding: 6px 0px 6px 20px;
 
+`
+
+const PlantInfo = styled.div`
+    display: flex;
+    justify-content: flex-start;
 `
 
 const WateringForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-right: 40px;
 `
 
 
@@ -36,8 +41,9 @@ const AddPlant = () => {
             <PlantInfoContainer>
                 <div className='plantName'>Fiddle Leaf Fig</div>
                 <div className='plantSpecies'>Ficus lyrata</div>
-                <div>
+                <PlantInfo>
                     <div>
+                        <div className='needs'>Start Watering</div>
                         <WateringForm>
                             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"/>
                             <label for="vehicle1"> I have a bike</label>
@@ -48,11 +54,11 @@ const AddPlant = () => {
                         </WateringForm>
                     </div>
                     <div>
-                        <div> Watering Schedule</div>
-                        <div>Light</div>
-                        <button>Add Plant</button>
+                        <div className='needs'> Watering Schedule</div>
+                        <div className='needs'>Light</div>
+                        <button className='button' >Add Plant</button>
                     </div>
-                </div>
+                </PlantInfo>
             </PlantInfoContainer>
         </AddPlantContainer>
     )

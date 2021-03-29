@@ -92,3 +92,21 @@ h1 {
 	width: 50%;
 	margin-bottom: 20px;
 }
+
+.needs {
+	font-size: 10px;
+	font-weight: 800;
+	color: #548A60;
+	text-transform: uppercase;
+}
+
+.button {
+	height: 54px;
+	background-color: #548A60;
+	padding: 15px;
+	color: white;
+	font-size: 17px;
+	font-weight: 700;
+	border: none;
+
+}
