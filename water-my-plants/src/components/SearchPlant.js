@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+
+//Component Import
 import AddPlant from './AddPlant'
 
 //Styling
@@ -12,12 +14,10 @@ const AddPlantDiv = styled.div`
     padding: 20px 0px 47px 0px;
     border-bottom: 2px solid #E5E5E5;
 `
-
 const AddPlantForm = styled.form`
     display: flex;
     flex-direction: column;
 `
-
 const Input = styled.input`
     margin: 30px 0px 30px 0px;
     border: none;
@@ -32,14 +32,12 @@ const Input = styled.input`
         outline: none;
     }
 `
-
 const CloseAddPlantDiv = styled.div`
     width: 100%;
     padding-right: 30px;
     display: flex;
     justify-content: flex-end;
 `
-
 const CloseAddPlantButton = styled.div`
     cursor: pointer;
 `
