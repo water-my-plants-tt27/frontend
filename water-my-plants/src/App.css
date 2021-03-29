@@ -60,3 +60,69 @@ h1 {
   font-weight: 700;
   line-height: 40px;
 }
+
+.accordion {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 200ms ease-out;
+}
+
+.open {
+	transition: all 200ms ease-in;
+	max-height: unset;
+}
+
+.plantName {
+	font-size: 18px;
+	font-weight: 700;
+	color: #224229;
+	text-align: left;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.plantSpecies {
+	font-size: 13px;
+	font-style: italic;
+	font-weight: 600;
+	color: #BCB6A6;
+	padding: 5px;
+	border-bottom: 3px solid #CBAD91;
+	text-align: left;
+	width: 70%;
+	margin-bottom: 20px;
+}
+
+.needs {
+	font-size: 10px;
+	font-weight: 800;
+	color: #548A60;
+	text-transform: uppercase;
+	margin-bottom: 6px;
+}
+
+.button {
+	height: 54px;
+	background-color: #548A60;
+	padding: 15px;
+	color: white;
+	font-size: 17px;
+	font-weight: 700;
+	border: none;
+	min-width: 180px;
+}
+
+.dayCheckbox {
+	color: #E5E5E5;
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0px 0px 12px 0px;
+}
+
+.dayCheckbox:hover {
+	color: #548A60;
+}
+
+.checked {
+	color: #548A60 !important;
+}
