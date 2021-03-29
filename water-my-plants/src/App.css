@@ -98,6 +98,7 @@ h1 {
 	font-weight: 800;
 	color: #548A60;
 	text-transform: uppercase;
+	margin-bottom: 6px;
 }
 
 .button {
@@ -108,20 +109,17 @@ h1 {
 	font-size: 17px;
 	font-weight: 700;
 	border: none;
+	min-width: 180px;
 }
 
 .dayCheckbox {
 	color: #E5E5E5;
 	font-size: 15px;
 	font-weight: bold;
-	margin: 6px 0px;
+	margin: 0px 0px 12px 0px;
 }
 
 .dayCheckbox:hover {
-	color: #548A60;
-}
-
-.dayCheckbox:checked {
 	color: #548A60;
 }
 
