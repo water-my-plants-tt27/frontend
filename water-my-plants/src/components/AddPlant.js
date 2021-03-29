@@ -31,10 +31,7 @@ const WaterLightContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
 `
-const WaterLight = styled.p`
-    font-size: 15px;
-    color: #224229;
-`
+
 
 
 
@@ -88,11 +85,11 @@ const AddPlant = () => {
                     <WaterLightContainer>
                         <div>
                             <div className='needs'> Watering Schedule</div>
-                            <WaterLight>Once Per Week</WaterLight>
+                            <div className='needsDetails'>Once Per Week</div>
                         </div>
                         <div>
                             <div className='needs'>Light</div>
-                            <WaterLight>Medium - Bright inderect light</WaterLight>
+                            <div className='needsDetails'>Medium - Bright inderect light</div>
                         </div>
                         <button className='button' >Add Plant</button>
                     </WaterLightContainer>
