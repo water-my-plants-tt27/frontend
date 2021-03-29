@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 //Component Import
 import LeftBar from './LeftBar'
-import AddPlant from './AddPlant'
+import MyPlantsHeader from './MyPlantsHeader'
 
 //Styling
 const MyPlantsContainer = styled.div`
@@ -13,8 +13,7 @@ const MyPlantsContainer = styled.div`
 const MyPlantsBody = styled.div`
     width: 100%;
     background-color: #FBF9F3;
-    padding-top: 75px;
-
+    padding-top: 25px;
 `
 
 const MyPlants = () => {
@@ -23,7 +22,7 @@ const MyPlants = () => {
         <MyPlantsContainer>
             <LeftBar />
             <MyPlantsBody>
-                <AddPlant />
+                <MyPlantsHeader />
             </MyPlantsBody>
         </MyPlantsContainer>
     )

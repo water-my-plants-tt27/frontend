@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import MyPlantsNav from './MyPlantsNav'
+import MyPlantsHeader from './MyPlantsHeader'
 
 //Styling
 const AddPlantDiv = styled.div`
@@ -15,7 +15,6 @@ const AddPlant = () => {
 
     return (
         <div>
-            <MyPlantsNav />
             <AddPlantDiv>
                 <h1>Search for a Plant</h1>
                 <form>
