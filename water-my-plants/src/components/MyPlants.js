@@ -26,7 +26,7 @@ const NavMenuContainer = styled.div`
     position: absolute;
     z-index: 1;
     right: 0px;
-    `
+`
 const fakePlantData = [
  {
      plant_id: 1,

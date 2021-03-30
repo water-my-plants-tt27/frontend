@@ -52,6 +52,7 @@ table {
 
 .App {
   box-sizing: border-box;
+  background-color: #224229;
 }
 
 h1 {
@@ -128,6 +129,6 @@ h1 {
 	color: #548A60;
 }
 
-.checked {
+.dayCheckbox input[type='radio']:checked+label {
 	color: #548A60 !important;
 }
