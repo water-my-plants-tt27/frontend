@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios' 
-import Input from 'react-phone-number-input/input'
+// import Input from 'react-phone-number-input/input'
 // import styled from 'styled-components'
 
 const initRegValue={

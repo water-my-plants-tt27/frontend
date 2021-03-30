@@ -101,6 +101,11 @@ h1 {
 	margin-bottom: 6px;
 }
 
+.needsDetails {
+	font-size: 15px;
+    color: #224229;
+}
+
 .button {
 	height: 54px;
 	background-color: #548A60;

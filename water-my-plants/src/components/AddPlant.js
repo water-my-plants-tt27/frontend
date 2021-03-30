@@ -8,12 +8,10 @@ const AddPlantContainer = styled.div`
     justify-content: center;
     margin-top: 30px;
 `
-
 const PlantImg = styled.img`
     object-fit: contain;
     max-width: 224px;
 `
-
 const PlantInfoContainer = styled.div`
     width: 100%;
     display: flex;
@@ -21,26 +19,19 @@ const PlantInfoContainer = styled.div`
     align-items: flex-start; 
     padding: 6px 0px 6px 20px;
 `
-
 const PlantInfo = styled.div`
     display: flex;
     justify-content: flex-start;
 `
-
 const WateringForm = styled.form`
     margin-right: 40px;
 `
-
 const WaterLightContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 `
 
-const WaterLight = styled.p`
-    font-size: 15px;
-    color: #224229;
-`
 
 
 
@@ -94,11 +85,11 @@ const AddPlant = () => {
                     <WaterLightContainer>
                         <div>
                             <div className='needs'> Watering Schedule</div>
-                            <WaterLight>Once Per Week</WaterLight>
+                            <div className='needsDetails'>Once Per Week</div>
                         </div>
                         <div>
                             <div className='needs'>Light</div>
-                            <WaterLight>Medium - Bright inderect light</WaterLight>
+                            <div className='needsDetails'>Medium - Bright inderect light</div>
                         </div>
                         <button className='button' >Add Plant</button>
                     </WaterLightContainer>

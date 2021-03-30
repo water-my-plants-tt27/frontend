@@ -11,7 +11,6 @@ const HeaderContainer = styled.div`
     align-items: center;
     padding: 20px;
 `
-
 const AddPlantButton = styled.div`
     cursor: pointer;
     font-size: 17px;
