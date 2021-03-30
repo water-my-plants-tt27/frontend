@@ -9,7 +9,7 @@ const initialUpdatedAccountValues ={
    phoneNumber: '',
 }
  
-const UpdatedAccount = () => {
+const UpdateAccount = () => {
     const [updatedAccountValues, setUpdatedAccountValues] = useState(initialUpdatedAccountValues)
 
     const changeHandler = (e) => {
@@ -19,7 +19,7 @@ const UpdatedAccount = () => {
     }
 
     const onSubmit = () =>{
-        axios.put('ttps://reqres.in/api/updatedAccount', updatedAccountValues)
+        axios.put('ttps://reqres.in/api/updateAccount', updatedAccountValues)
         .then(res => {
             console.log('res from UpdateAccount:', res)
         })
