@@ -23,8 +23,6 @@ const Plants = styled.div`
 `
 //Positioning for the navMenu
 const NavMenuContainer = styled.div`
-    /* display:flex; */
-    border: 3px solid red;
     position: absolute;
     z-index: 1;
     right: 0px;
