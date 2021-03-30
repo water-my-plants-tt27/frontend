@@ -21,7 +21,6 @@ const Plants = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;
 `
-
 const fakePlantData = [
  {
      plant_id: 1,

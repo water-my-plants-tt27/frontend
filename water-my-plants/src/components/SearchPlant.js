@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 //Component Import
 import AddPlant from './AddPlant'
+import PlantCard from './PlantCard'
 
 //Styling
 const AddPlantDiv = styled.div`
@@ -42,8 +43,79 @@ const CloseAddPlantButton = styled.div`
     cursor: pointer;
 `
 
+// DUMMY DATA
+const fakePlantData = [
+    {
+        plant_id: 1,
+        plant_name: 'Fiddle Leaf Fig',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 2,
+        plant_name: 'Fiddle Leaf Fig 2',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 3,
+        plant_name: 'Fiddle Leaf Fig 3',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 4,
+        plant_name: 'Fiddle Leaf Fig 4',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 5,
+        plant_name: 'Fiddle Leaf Fig 5',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 6,
+        plant_name: 'Fiddle Leaf Fig 6',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+    {
+        plant_id: 7,
+        plant_name: 'Fiddle Leaf Fig 7',
+        species_name: 'Ficus lyrata',
+        water_schedule: 'Once per week',
+        light_level: 'low indirect light',
+        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+    },   
+   ]
+
+
 const SearchPlant = (props) => {
     const {toggleAccordion} = props;
+
+    const [searchValue, setSearchValue] = useState('')
+
+    const handleChange = (e) => {
+        const searchPlant = fakePlantData.filter(plant => plant.plant_name === e.target.value)
+        console.log(searchPlant.length)
+        if (searchPlant.length === 1) {
+            setSearchValue(searchPlant)
+        }
+    }
 
     return (
             <AddPlantDiv>
@@ -52,15 +124,20 @@ const SearchPlant = (props) => {
                 </CloseAddPlantDiv>
                 <h1>Search for a Plant</h1>
                 <AddPlantForm>
-                    <Input list="plants" name="plant" placeholder='Search Plants'/>
+                    <Input list="plants" name="plant" placeholder='Search Plants' onChange={handleChange}/>
                     <datalist id='plants'>
-                        <option value='item1'/>
-                        <option value='item2'/>
-                        <option value='item3'/>
-                        <option value='item4'/>
+                        {
+                            fakePlantData.map((plant) => {
+                                return(
+                                    <option id={plant.plant_id} value={plant.plant_name}/>
+                                )
+                            })
+                        }
                     </datalist>
                  </AddPlantForm>
-                 <AddPlant />
+                 {
+                     searchValue ? <AddPlant plant={searchValue[0]}/> : null
+                 }
             </AddPlantDiv>
     )
 }
