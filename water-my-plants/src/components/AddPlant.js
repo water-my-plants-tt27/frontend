@@ -37,8 +37,6 @@ const WaterLightContainer = styled.div`
 
 const AddPlant = ({plant}) => {
 
-    //TODO: add class checked to selected options
-
     return (
         <AddPlantContainer>
             <div>
@@ -53,31 +51,31 @@ const AddPlant = ({plant}) => {
                         <div className='needs'>Start Watering</div>
                         <WateringForm>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="monday" name="monday" value="monday"/>
+                                <input type="radio" id="monday" name="day" value="monday"/>
                                 <label for="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
-                               <input type="checkbox" id="tuesday" name="tuesday" value="tuesday"/>
+                               <input type="radio" id="tuesday" name="day" value="tuesday"/>
                                 <label for="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="Wednesday" name="Wednesday" value="Wednesday"/>
+                                <input type="radio" id="Wednesday" name="day" value="Wednesday"/>
                                 <label for="Wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="Thursday" name="Thursday" value="Thursday"/>
+                                <input type="radio" id="Thursday" name="day" value="Thursday"/>
                                 <label for="Thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="Friday" name="Friday" value="Friday"/>
+                                <input type="radio" id="Friday" name="day" value="Friday"/>
                                 <label for="Friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="Saturday" name="Saturday" value="Saturday"/>
+                                <input type="radio" id="Saturday" name="day" value="Saturday"/>
                                 <label for="Saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="checkbox" id="Sunday" name="Sunday" value="Sunday"/>
+                                <input type="radio" id="Sunday" name="day" value="Sunday"/>
                                 <label for="Sunday">Sunday</label>
                             </div>
                         </WateringForm>

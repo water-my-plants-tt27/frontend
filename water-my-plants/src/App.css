@@ -130,6 +130,7 @@ table {
 
 .App {
   box-sizing: border-box;
+  background-color: #224229;
 }
 
 h1 {
@@ -196,6 +197,15 @@ h1 {
   font-family: "Raleway", sans-serif;
 }
 
+.button:hover {
+	background-color: #224229;
+}
+
+.button:focus {
+	outline: none;
+	background-color: #224229;
+}
+
 .dayCheckbox {
   color: #e5e5e5;
   font-size: 15px;
@@ -207,6 +217,8 @@ h1 {
   color: #548a60;
 }
 
-.checked {
-  color: #548a60 !important;
+
+.dayCheckbox input[type='radio']:checked+label {
+	color: #548A60 !important;
 }
+

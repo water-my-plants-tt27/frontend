@@ -26,7 +26,7 @@ const NavMenuContainer = styled.div`
     position: absolute;
     z-index: 1;
     right: 0px;
-    `
+`
 const fakePlantData = [
  {
      plant_id: 1,
@@ -99,7 +99,7 @@ const MyPlants = () => {
                 <Plants>
                     {
                         fakePlantData.map((plant) => {
-                            return <PlantCard plant={plant} />
+                            return <PlantCard key={plant.plant_id} plant={plant} />
                         })
                     }
                 </Plants>
