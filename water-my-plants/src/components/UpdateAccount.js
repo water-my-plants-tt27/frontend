@@ -1,6 +1,15 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import styled from 'styled-components';
 
+import LeftBar from './LeftBar';
+import NavMenu from './NavMenu';
+
+const NavMenuContainer = styled.div`
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    `
  
 const initialUpdatedAccountValues ={
    name: '',
@@ -19,7 +28,7 @@ const UpdateAccount = () => {
     }
 
     const onSubmit = () =>{
-        axios.put('ttps://reqres.in/api/updateAccount', updatedAccountValues)
+        axios.put('https://reqres.in/api/updateAccount', updatedAccountValues)
         .then(res => {
             console.log('res from UpdateAccount:', res)
         })
@@ -30,6 +39,10 @@ const UpdateAccount = () => {
 
    return (
        <div>
+            <NavMenuContainer className="navBar">
+                <NavMenu/>
+            </NavMenuContainer>
+            <LeftBar />
            <div className='myAccountHeader'>
                <h1>My Account</h1>
            </div>
