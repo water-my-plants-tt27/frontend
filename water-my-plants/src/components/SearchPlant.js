@@ -111,11 +111,18 @@ const fakePlantData = [
 const SearchPlant = (props) => {
     const {toggleAccordion} = props;
 
+    const [formInput, setFormInput] = useState('')
     const [searchValue, setSearchValue] = useState('')
 
+    const handleClose = () => {
+        setFormInput('')
+        setSearchValue('')
+        toggleAccordion();
+    }
+
     const handleChange = (e) => {
+        setFormInput(e.target.value)
         const searchPlant = fakePlantData.filter(plant => plant.plant_name === e.target.value)
-        console.log(searchPlant.length)
         if (searchPlant.length === 1) {
             setSearchValue(searchPlant)
         }
@@ -124,16 +131,16 @@ const SearchPlant = (props) => {
     return (
             <AddPlantDiv>
                 <CloseAddPlantDiv>
-                    <CloseAddPlantButton onClick={()=>toggleAccordion()} src={closeButton} alt='close add plant' />
+                    <CloseAddPlantButton onClick={handleClose} src={closeButton} alt='close add plant' />
                 </CloseAddPlantDiv>
                 <h1>Search for a Plant</h1>
                 <AddPlantForm>
-                    <Input list="plants" name="plant" placeholder='Search Plants' onChange={handleChange}/>
+                    <Input list="plants" name="plant" placeholder='Search Plants' onChange={handleChange} value={formInput}/>
                     <datalist id='plants'>
                         {
                             fakePlantData.map((plant) => {
                                 return(
-                                    <option id={plant.plant_id} value={plant.plant_name}/>
+                                    <option key={plant.plant_id} id={plant.plant_id} value={plant.plant_name}/>
                                 )
                             })
                         }
