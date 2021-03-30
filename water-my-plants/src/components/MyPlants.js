@@ -4,12 +4,12 @@ import styled from 'styled-components'
 //Component Import
 import LeftBar from './LeftBar'
 import MyPlantsHeader from './MyPlantsHeader'
+import NavMenu from './NavMenu'
 import PlantCard from './PlantCard'
 
 //Styling
 const MyPlantsContainer = styled.div`
     display: flex;
-
 `
 const MyPlantsBody = styled.div`
     width: 100%;
@@ -21,6 +21,14 @@ const Plants = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;
 `
+//Positioning for the navMenu
+const NavMenuContainer = styled.div`
+    /* display:flex; */
+    border: 3px solid red;
+    position: absolute;
+    z-index: 1;
+    right: 0px;
+    `
 const fakePlantData = [
  {
      plant_id: 1,
@@ -84,6 +92,9 @@ const MyPlants = () => {
 
     return (
         <MyPlantsContainer>
+            <NavMenuContainer className="navBar">
+                <NavMenu/>
+            </NavMenuContainer>
             <LeftBar />
             <MyPlantsBody>
                 <MyPlantsHeader />
