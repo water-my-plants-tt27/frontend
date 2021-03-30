@@ -35,19 +35,19 @@ const WaterLightContainer = styled.div`
 
 
 
-const AddPlant = () => {
+const AddPlant = ({plant}) => {
 
     //TODO: add class checked to selected options
 
     return (
         <AddPlantContainer>
             <div>
-                <PlantImg src="https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576" alt='plant' />
+                <PlantImg src={plant.plant_image} alt={plant.plant_name} />
                 <div>Upload Custom Image</div>
             </div>
             <PlantInfoContainer>
-                <div className='plantName'>Fiddle Leaf Fig</div>
-                <div className='plantSpecies'>Ficus lyrata</div>
+                <div className='plantName'>{plant.plant_name}</div>
+                <div className='plantSpecies'>{plant.species_name}</div>
                 <PlantInfo>
                     <div>
                         <div className='needs'>Start Watering</div>
@@ -85,13 +85,13 @@ const AddPlant = () => {
                     <WaterLightContainer>
                         <div>
                             <div className='needs'> Watering Schedule</div>
-                            <div className='needsDetails'>Once Per Week</div>
+                            <div className='needsDetails'>{plant.water_schedule}</div>
                         </div>
                         <div>
                             <div className='needs'>Light</div>
-                            <div className='needsDetails'>Medium - Bright inderect light</div>
+                            <div className='needsDetails'>{plant.light_level}</div>
                         </div>
-                        <button className='button' >Add Plant</button>
+                        <button className='button'>Add Plant</button>
                     </WaterLightContainer>
                 </PlantInfo>
             </PlantInfoContainer>
