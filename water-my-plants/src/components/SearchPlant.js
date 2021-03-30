@@ -31,6 +31,7 @@ const Input = styled.input`
 
     &:focus {
         outline: none;
+        
     }
 `
 const CloseAddPlantDiv = styled.div`
