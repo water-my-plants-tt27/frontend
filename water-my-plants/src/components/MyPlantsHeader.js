@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import styled from 'styled-components'
 
 //Component Import
@@ -19,12 +19,13 @@ const AddPlantButton = styled.div`
 `
 
 const MyPlantsHeader = () => {
-    
+    const [open, setIsOpen] = useState(false)
         
 
     const addPlantRef= useRef(null);
     const toggleAccordion = () => {
         addPlantRef.current.classList.toggle('open')
+        setIsOpen(!open)
     }
 
     return (
@@ -32,7 +33,7 @@ const MyPlantsHeader = () => {
             <HeaderContainer>
                 <h1>My Plants</h1>
                 <AddPlantButton onClick={() => toggleAccordion()}>
-                    Add a Plant +
+                    {open ? 'Add a Plant [-]' : 'Add a Plant [+]'}
                 </AddPlantButton>
             </HeaderContainer>
             <div ref={addPlantRef} className='accordion'>

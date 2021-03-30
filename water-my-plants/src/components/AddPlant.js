@@ -37,8 +37,6 @@ const WaterLightContainer = styled.div`
 
 const AddPlant = ({plant}) => {
 
-    //TODO: add class checked to selected options
-
     return (
         <AddPlantContainer>
             <div>
