@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Register from './components/Register';
 import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
+import UpdateAccount from './components/UpdateAccount';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       </Route>
       {/* <Route path='/editPlant'>
         <EditPlant />
+      </Route> */}
+      {/* <Route path='/updateAccount'>
+        <UpdateAccount />
       </Route> */}
     </div>
   );
