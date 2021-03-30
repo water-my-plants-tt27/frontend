@@ -6,6 +6,7 @@ import MyPlants from './components/MyPlants'
 import Login from './components/Login'
 import Register from './components/Register';
 import NavMenu from './components/NavMenu';
+import EditPlant from './components/EditPlant';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
       <Route path='/navMenu'>
         <NavMenu />
       </Route>
+      {/* <Route path='/editPlant'>
+        <EditPlant />
+      </Route> */}
     </div>
   );
 }
