@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import closeButton from '../images/close.svg'
 
 //Component Import
 import AddPlant from './AddPlant'
@@ -31,6 +32,7 @@ const Input = styled.input`
 
     &:focus {
         outline: none;
+        color: #224229;
     }
 `
 const CloseAddPlantDiv = styled.div`
@@ -39,7 +41,9 @@ const CloseAddPlantDiv = styled.div`
     display: flex;
     justify-content: flex-end;
 `
-const CloseAddPlantButton = styled.div`
+const CloseAddPlantButton = styled.img`
+    width: 20px;
+    opacity: 30%;
     cursor: pointer;
 `
 
@@ -120,7 +124,7 @@ const SearchPlant = (props) => {
     return (
             <AddPlantDiv>
                 <CloseAddPlantDiv>
-                    <CloseAddPlantButton onClick={()=>toggleAccordion()}>X</CloseAddPlantButton>
+                    <CloseAddPlantButton onClick={()=>toggleAccordion()} src={closeButton} alt='close add plant' />
                 </CloseAddPlantDiv>
                 <h1>Search for a Plant</h1>
                 <AddPlantForm>

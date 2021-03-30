@@ -21,10 +21,7 @@ export default function NavMenu() {
 }
 
 const MenuButton = styled.div`
-    
-    /* display: flex;
-    width: 100%; */
-    
-  
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     `
