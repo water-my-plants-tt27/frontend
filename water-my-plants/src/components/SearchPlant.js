@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 //Component Import
@@ -110,7 +110,11 @@ const SearchPlant = (props) => {
     const [searchValue, setSearchValue] = useState('')
 
     const handleChange = (e) => {
-        setSearchValue(e.target.value)
+        const searchPlant = fakePlantData.filter(plant => plant.plant_name === e.target.value)
+        console.log(searchPlant.length)
+        if (searchPlant.length === 1) {
+            setSearchValue(searchPlant)
+        }
     }
 
     return (
@@ -125,13 +129,15 @@ const SearchPlant = (props) => {
                         {
                             fakePlantData.map((plant) => {
                                 return(
-                                    <option className='options' value={plant.plant_name}/>
+                                    <option id={plant.plant_id} value={plant.plant_name}/>
                                 )
                             })
                         }
                     </datalist>
                  </AddPlantForm>
-                 <AddPlant />
+                 {
+                     searchValue ? <AddPlant plant={searchValue}/> : null
+                 }
             </AddPlantDiv>
     )
 }
