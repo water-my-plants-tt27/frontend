@@ -99,7 +99,7 @@ const MyPlants = () => {
                 <Plants>
                     {
                         fakePlantData.map((plant) => {
-                            return <PlantCard plant={plant} />
+                            return <PlantCard key={plant.plant_id} plant={plant} />
                         })
                     }
                 </Plants>
