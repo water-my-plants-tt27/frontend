@@ -118,6 +118,15 @@ h1 {
 	min-width: 180px;
 }
 
+.button:hover {
+	background-color: #224229;
+}
+
+.button:focus {
+	outline: none;
+	background-color: #224229;
+}
+
 .dayCheckbox {
 	color: #E5E5E5;
 	font-size: 15px;
