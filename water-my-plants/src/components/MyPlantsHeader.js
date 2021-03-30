@@ -19,8 +19,10 @@ const AddPlantButton = styled.div`
 `
 
 const MyPlantsHeader = () => {
-    const addPlantRef= useRef(null);
+    
+        
 
+    const addPlantRef= useRef(null);
     const toggleAccordion = () => {
         addPlantRef.current.classList.toggle('open')
     }
