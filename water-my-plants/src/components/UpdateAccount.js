@@ -58,6 +58,15 @@ const Input = styled.input`
         color: #B1B7B3;
     }
 `
+// const DeleteUserDiv = styled.div`
+//     font-size: 14px;
+//     color: #B1B7B3;
+//     cursor: pointer;
+//     margin-top: 15px;
+//     &:hover {
+//         color: #909692;
+//     }
+// `
  
 
 const UpdateAccount = () => {
@@ -94,6 +103,13 @@ const UpdateAccount = () => {
                 console.log({'err from UpdateAccount:': err})
             })
     }
+
+    // const handleDelete = (e) => {
+    //     e.preventDefault();
+    //     const id = updatedAccountValues.user_id
+    //     axiosWithAuth()
+    //         .delete()
+    // }
 
    return (
        <MyAccountContainer>
@@ -138,6 +154,7 @@ const UpdateAccount = () => {
                             />
                             <button className='button'> UPDATE </button>
                         </UpdateInfoForm>
+                        {/* <DeleteUserDiv onClick={handleDelete}>Delete Account</DeleteUserDiv> */}
                     </UpdateInfoDiv>
                </AccountInfoBody>
        </MyAccountContainer>
