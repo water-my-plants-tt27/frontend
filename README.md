@@ -3,10 +3,13 @@
 API documentation
 (You can also reference it in the backend repo in the Github organization)
 BaseURL:  https://watermyplantsapi.herokuapp.com/api
+
 List of Endpoints:
+
 Users (auth)
 BaseURL/auth/register (POST) - register a user
 (test user is in the example)
+
 Parameters:
 | Name         | Type    | Required 
 | ------------ | ------- | --------
@@ -24,6 +27,7 @@ Example of what to use:
 }
 BaseURL/auth/login (POST) - login a user
 (test user is in the example)
+
 Parameters:
 | Name     | Type   | Required |
 | -------- | ------ | -------- |
@@ -35,9 +39,11 @@ Example of what to use:
   username: "test@gmail.com",
   password: "testPassword"
 }
+
 Users
 BaseURL/users (GET) - returns all users
 BaseURL/users/:id (PUT) - updates a user
+
 Parameters:
 | Name           | Type    | Required | Notes                            |
 | -------------- | ------- | -------- | ---------------------------------|
@@ -49,10 +55,15 @@ Parameters:
 
 Plants
 BaseURL/plants (GET) - returns all plants
+
 BaseURL/plants/:id (GET) - gets an individual plant
+
 BaseURL/plants (POST) - add a plant
+
 BaseURL/plants/:id (PUT) - update a plant
+
 BaseURL/plants/:id (DELETE) - delete a plant
+
 Parameters:
 | Name           | Type    | Required | Notes                             |
 | -------------- | ------- | -------- | --------------------------------- |
@@ -65,10 +76,15 @@ Parameters:
 
 
 My Plants
+
 BaseURL/my-plants/:id (GET) - returns all my_plants from a user
+
 BaseURL/my-plants (POST) - adds a my_plant
+
 BaseURL/my-plants/:id (PUT) - updates a my_plant
+
 BaseURL/my-plants/:id (DELETE) - removes a my_plant
+
 Parameters:
 | Name          | Type    | Required | Notes                             |
 | ------------- | --------| -------- | --------------------------------- |
