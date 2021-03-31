@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const initRegValue={
     name:'',
     email:'',
-    phoneNumber:'',
+    phone_number:'',
     password: '',
     pwConfirm: ''
 }
@@ -22,14 +22,20 @@ export default function Register() {
 
     const onSubmit =(e)=>{
         e.preventDefault();
-        axios.post('https://reqres.in/api/register', regValue)
+        const registerUser = {
+            name: regValue.name,
+            email:regValue.email,
+            phone_number:regValue.phone_number,
+            password: regValue.password,
+        }
+        axios.post('https://watermyplantsapi.herokuapp.com/api/auth/register', registerUser)
         .then((resp)=>{
             console.log(resp)
+            history.push('/login')
         })
         .catch((err)=>{
             console.log(err)
         })
-        history.push('/login')
     }
 
     return (
@@ -70,8 +76,8 @@ export default function Register() {
                         <label>  
                             <Input
                             type="text"
-                            name="phoneNumber"
-                            value={regValue.phoneNumber}
+                            name="phone_number"
+                            value={regValue.phone_number}
                             onChange={handleChange}
                             placeholder="Phone Number"
                             >
