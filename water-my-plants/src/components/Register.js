@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios' 
 // import Input from 'react-phone-number-input/input'
@@ -16,9 +16,18 @@ const initRegValue={
 export default function Register() {
     const [regValue, setRegValue] = useState(initRegValue);
     const [formErrors, setFormErrors] = useState('');
+    const [disabled, setDisabled] = useState(true);
     console.log(formErrors)
 
     const history = useHistory();
+
+    useEffect(() => {
+        if (regValue.password === regValue.pwConf) {
+            registerFormSchema.isValid(regValue).then(valid => setDisabled(!valid));
+        } else {
+            setDisabled(true)
+        }
+    }, [regValue])
     
     const handleChange=(e)=>{
         yup.reach(registerFormSchema, e.target.name)
@@ -121,7 +130,7 @@ export default function Register() {
                             regValue.pwConf ? regValue.pwConf === regValue.password ? null : <ErrorDiv>Passwords do not match</ErrorDiv> : null
                         }
                         <ButtonCont className="btn">
-                            <button className='button'>SIGN UP</button>
+                            <button disabled={disabled} className='button'>SIGN UP</button>
                             <LinkCont>
                                 <p> Already Have An Account?  </p>
                                 <a href='/Login'>  Sign in. </a>
