@@ -6,13 +6,15 @@ import styled from 'styled-components';
 // images
 import logo from '../images/logo.svg'
 import plantBanner from '../images/houseplants.jpeg'
+import watering from '../images/watering.jpeg'
+import plantcard from '../'
 
 // styling
 const MarketingContainer = styled.div`
     font-family: PT Serif;
     width: 100%;
     
-// ! Header 
+// !Header 
     .header{
         position: fixed;
         width: 100%;
@@ -98,9 +100,9 @@ const MarketingPage = () => {
                     <h1>Are your plants looking thirsty?</h1>
                 </div>
             </section>
-            <section className="marketing-content">
-
-            </section>
+            {/* <section className="marketing-content">
+                <img className="content-img" src={}
+            </section> */}
 
             
         </MarketingContainer>
