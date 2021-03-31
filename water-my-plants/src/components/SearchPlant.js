@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import closeButton from '../images/close.svg'
 
 //Component Import
 import AddPlant from './AddPlant'
 import PlantCard from './PlantCard'
+import PlantContext from '../contexts/plantContext'
 
 //Styling
 const AddPlantDiv = styled.div`
@@ -48,68 +49,69 @@ const CloseAddPlantButton = styled.img`
 `
 
 // DUMMY DATA
-const fakePlantData = [
-    {
-        plant_id: 1,
-        plant_name: 'Fiddle Leaf Fig',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 2,
-        plant_name: 'Fiddle Leaf Fig 2',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 3,
-        plant_name: 'Fiddle Leaf Fig 3',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 4,
-        plant_name: 'Fiddle Leaf Fig 4',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 5,
-        plant_name: 'Fiddle Leaf Fig 5',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 6,
-        plant_name: 'Fiddle Leaf Fig 6',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-    {
-        plant_id: 7,
-        plant_name: 'Fiddle Leaf Fig 7',
-        species_name: 'Ficus lyrata',
-        water_schedule: 'Once per week',
-        light_level: 'low indirect light',
-        plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
-    },   
-   ]
+// const fakePlantData = [
+//     {
+//         plant_id: 1,
+//         plant_name: 'Fiddle Leaf Fig',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 2,
+//         plant_name: 'Fiddle Leaf Fig 2',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 3,
+//         plant_name: 'Fiddle Leaf Fig 3',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 4,
+//         plant_name: 'Fiddle Leaf Fig 4',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 5,
+//         plant_name: 'Fiddle Leaf Fig 5',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 6,
+//         plant_name: 'Fiddle Leaf Fig 6',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//     {
+//         plant_id: 7,
+//         plant_name: 'Fiddle Leaf Fig 7',
+//         species_name: 'Ficus lyrata',
+//         water_schedule: 'Once per week',
+//         light_level: 'low indirect light',
+//         plant_image: 'https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_fiddle-leaf-fig_charcoal-alt.jpg?ver=279576'
+//     },   
+//    ]
 
 
 const SearchPlant = (props) => {
     const {toggleAccordion} = props;
+    const plants = useContext(PlantContext)
 
     const [formInput, setFormInput] = useState('')
     const [searchValue, setSearchValue] = useState('')
@@ -122,7 +124,7 @@ const SearchPlant = (props) => {
 
     const handleChange = (e) => {
         setFormInput(e.target.value)
-        const searchPlant = fakePlantData.filter(plant => plant.plant_name === e.target.value)
+        const searchPlant = plants.filter(plant => plant.plant_name === e.target.value)
         if (searchPlant.length === 1) {
             setSearchValue(searchPlant)
         }
@@ -138,7 +140,7 @@ const SearchPlant = (props) => {
                     <Input list="plants" name="plant" placeholder='Search Plants' onChange={handleChange} value={formInput}/>
                     <datalist id='plants'>
                         {
-                            fakePlantData.map((plant) => {
+                            plants.map((plant) => {
                                 return(
                                     <option key={plant.plant_id} id={plant.plant_id} value={plant.plant_name}/>
                                 )

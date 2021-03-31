@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 //STYLING
@@ -32,10 +32,12 @@ const WaterLightContainer = styled.div`
     justify-content: space-between;
 `
 
-
-
-
 const AddPlant = ({plant}) => {
+    const [dayValue, setDayValue] = useState('');
+
+    const changeHandler = (e) => {
+        setDayValue(e.target.value)
+    }
 
     return (
         <AddPlantContainer>
@@ -49,34 +51,34 @@ const AddPlant = ({plant}) => {
                 <PlantInfo>
                     <div>
                         <div className='needs'>Start Watering</div>
-                        <WateringForm>
+                        <WateringForm onChange={changeHandler}>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="monday" name="day" value="monday"/>
+                                <input type="radio" id="monday" name="day" value='1'/>
                                 <label for="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
-                               <input type="radio" id="tuesday" name="day" value="tuesday"/>
+                               <input type="radio" id="tuesday" name="day" value="2"/>
                                 <label for="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Wednesday" name="day" value="Wednesday"/>
-                                <label for="Wednesday">Wednesday</label>
+                                <input type="radio" id="wednesday" name="day" value="3"/>
+                                <label for="wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Thursday" name="day" value="Thursday"/>
-                                <label for="Thursday">Thursday</label>
+                                <input type="radio" id="thursday" name="day" value="4"/>
+                                <label for="thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Friday" name="day" value="Friday"/>
-                                <label for="Friday">Friday</label>
+                                <input type="radio" id="friday" name="day" value="5"/>
+                                <label for="friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Saturday" name="day" value="Saturday"/>
-                                <label for="Saturday">Saturday</label>
+                                <input type="radio" id="saturday" name="day" value="6"/>
+                                <label for="saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Sunday" name="day" value="Sunday"/>
-                                <label for="Sunday">Sunday</label>
+                                <input type="radio" id="sunday" name="day" value="7"/>
+                                <label for="sunday">Sunday</label>
                             </div>
                         </WateringForm>
                     </div>
