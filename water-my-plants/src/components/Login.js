@@ -14,7 +14,7 @@ export default function Login() {
     const [loginVal, setLoginVal]=useState(initLoginVal);
     const history = useHistory();
     const {userInfo} = useContext(UserContext); //userInfo is object with user state and setUser function
-    console.log(userInfo)
+
 
     const handleChanges = e =>{
         setLoginVal({
