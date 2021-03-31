@@ -1,23 +1,45 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios' 
 // import Input from 'react-phone-number-input/input'
 import styled from 'styled-components'
+import * as yup from 'yup'
+import registerFormSchema from '../validation/registerFormSchema'
 
 const initRegValue={
     name:'',
     email:'',
     phone_number:'',
     password: '',
-    pwConfirm: ''
+    pwConf: ''
 }
 export default function Register() {
-    const [regValue, setRegValue] = useState(initRegValue)
+    const [regValue, setRegValue] = useState(initRegValue);
+    const [formErrors, setFormErrors] = useState('');
+    const [disabled, setDisabled] = useState(true);
+    console.log(formErrors)
+
     const history = useHistory();
+
+    useEffect(() => {
+        if (regValue.password === regValue.pwConf) {
+            registerFormSchema.isValid(regValue).then(valid => setDisabled(!valid));
+        } else {
+            setDisabled(true)
+        }
+    }, [regValue])
     
     const handleChange=(e)=>{
+        yup.reach(registerFormSchema, e.target.name)
+            .validate(e.target.value)
+            .then(() => {
+                setFormErrors({...formErrors, [e.target.name]: ''})
+            })
+            .catch(err => {
+                setFormErrors({...formErrors, [e.target.name]: err.errors[0]})
+            })
+        
         setRegValue({...regValue, [e.target.name]:e.target.value})
-
     }
 
     const onSubmit =(e)=>{
@@ -52,20 +74,23 @@ export default function Register() {
                             name="name"
                             value={regValue.name}
                             onChange={handleChange}
-                            placeholder="Name"
+                            placeholder="Name*"
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.name}</ErrorDiv>
+
                         <label>  
                             <Input
                             type="email"
                             name="email"
                             value={regValue.email}
                             onChange={handleChange}
-                            placeholder="Email"
+                            placeholder="Email*"
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.email}</ErrorDiv>
                         {/* <Input 
                         placeholder="Phone Number"
                         country="US"
@@ -79,32 +104,39 @@ export default function Register() {
                             name="phone_number"
                             value={regValue.phone_number}
                             onChange={handleChange}
-                            placeholder="Phone Number"
+                            placeholder="Phone Number*"
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.phone_number}</ErrorDiv>
                         <label>
                             <Input
                             type="password"
                             name="password"
                             value={regValue.password}
                             onChange={handleChange}
-                            placeholder="Password"
+                            placeholder="Password*"
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.password}</ErrorDiv>
                         <label>
                             <Input
+                            id="pwConf"
                             type="password"
                             name="pwConf"
                             value={regValue.pwConf}
                             onChange={handleChange}
-                            placeholder="Confirm Password"
+                            placeholder="Confirm Password*"
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.pwConf}</ErrorDiv>
+                        {
+                            regValue.pwConf ? regValue.pwConf === regValue.password ? null : <ErrorDiv>Passwords do not match</ErrorDiv> : null
+                        }
                         <ButtonCont className="btn">
-                            <button className='button'>SIGN UP</button>
+                            <button disabled={disabled} className='button'>SIGN UP</button>
                             <LinkCont>
                                 <p> Already Have An Account?  </p>
                                 <a href='/Login'>  Sign in. </a>
@@ -224,3 +256,9 @@ const LinkCont = styled.div`
         flex-direction: column;
         width:85%; 
     `
+
+const ErrorDiv = styled.div`
+    font-size: 14px;
+    color: red;
+    margin-bottom: 10px;
+`
