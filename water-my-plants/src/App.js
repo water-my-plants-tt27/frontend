@@ -10,6 +10,7 @@ import Register from './components/Register';
 import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
 import UpdateAccount from './components/UpdateAccount';
+import MarketingPage from './components/MarketingPage';
 import axios from 'axios';
 
 function App() {
@@ -33,10 +34,10 @@ function App() {
         <Route path='/myPlants'>
             <MyPlants />
         </Route>
-        <Route path='/login'>
+        <Route exact path='/login'>
           <Login />
         </Route>
-        <Route path='/register'>
+        <Route exact path='/register'>
           <Register />
         </Route>
         <Route path='/navMenu'>
@@ -48,6 +49,7 @@ function App() {
           <Route path='/updateAccount'>
           <UpdateAccount />
         </Route> */}
+        <Route path="/" component={MarketingPage} />
         </PlantContext.Provider >
     </div>
   );
