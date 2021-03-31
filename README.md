@@ -14,6 +14,7 @@ Parameters:
 | email        | string  | yes       
 | phone_number | string  | yes  
 | password     | string  | yes  
+
 Example of what to use:
 {
   name: 'testName',
@@ -28,6 +29,7 @@ Parameters:
 | -------- | ------ | -------- |
 | email    | string | yes      |
 | password | string | yes      |
+
 Example of what to use:
 {
   username: "test@gmail.com",
@@ -43,6 +45,8 @@ Parameters:
 | name           | string  | yes      | The name of the user             |
 | phone_number   | string  | yes      | The phone number of the user     |
 | email          | string  | yes      | The email of the user            |
+
+
 Plants
 BaseURL/plants (GET) - returns all plants
 BaseURL/plants/:id (GET) - gets an individual plant
@@ -58,6 +62,8 @@ Parameters:
 | water_schedule | string  | yes      | frequency of the water schedule   |
 | light_level    | string  | yes      | light level                       |
 | plant_image    | string  | yes      | Image of the plant                |
+
+
 My Plants
 BaseURL/my-plants/:id (GET) - returns all my_plants from a user
 BaseURL/my-plants (POST) - adds a my_plant
