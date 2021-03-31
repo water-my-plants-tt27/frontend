@@ -169,7 +169,51 @@ const MarketingContainer = styled.div`
     }
 
     @media (min-width: 768px){
-
+        .logo img{
+            width: 150px;
+            height: 150px;
+        }
+        .link{
+            font-size: 1.5rem;
+        }
+        .title{
+            top: 55%;
+            width: 70%;
+        }
+        .title h1{
+            font-size: 5rem;
+            line-height: 5.5rem;
+        }
+        .marketing-content{
+            margin-top: 6.5rem;
+        }
+        .content p{
+            width: 85%;
+            font-size: 1.3rem;
+        }
+        .search-card{
+            width: 700px;
+            box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+        .register{
+            font-size: 2rem; 
+        }
+        .footer{
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+        }
+        .footer h2{
+            font-size: 1.1rem;
+            margin-left: .5rem;
+        }
+        .social-media{
+            margin-left: 28rem;
+        }
+        .icon{
+            width: 2rem;
+        }
     }
     @media (min-width: 1024px){
 
