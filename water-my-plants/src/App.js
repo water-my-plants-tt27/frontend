@@ -10,7 +10,6 @@ import Register from './components/Register';
 import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
 import UpdateAccount from './components/UpdateAccount';
-import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState({});
@@ -30,12 +29,12 @@ function App() {
         <Route path='/navMenu'>
           <NavMenu />
         </Route>
-        {/* <Route path='/editPlant'>
+        <Route path='/editPlant'>
           <EditPlant />
           </Route>
-          <Route path='/updateAccount'>
+        <Route path='/updateAccount'>
           <UpdateAccount />
-        </Route> */}
+        </Route>
       </UserContext.Provider >
     </div>
   );
