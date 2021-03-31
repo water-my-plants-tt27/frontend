@@ -20,15 +20,15 @@ export default function Login() {
 
     const handleLogin = e => {
         e.preventDefault();
-        axios.post('https://reqres.in/api/login', loginVal)
+        axios.post('https://watermyplantsapi.herokuapp.com/api/auth/login', loginVal)
         .then((resp)=>{
             console.log(resp)
             setLoginVal(initLoginVal)
+            history.push('/myPlants')
         })
         .catch((err)=>{
-            console.log(err)
+            console.log(err.response)
         })
-        history.push('/myPlants')
 
     }
     return (

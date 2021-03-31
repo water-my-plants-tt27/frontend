@@ -29,10 +29,9 @@ function App() {
 
   return (
     <div className="App">
-        <Route path='/myPlants'>
           <PlantContext.Provider value={plants} >
+        <Route path='/myPlants'>
             <MyPlants />
-          </PlantContext.Provider >
         </Route>
         <Route path='/login'>
           <Login />
@@ -45,10 +44,11 @@ function App() {
         </Route>
         {/* <Route path='/editPlant'>
           <EditPlant />
-        </Route>
-        <Route path='/updateAccount'>
+          </Route>
+          <Route path='/updateAccount'>
           <UpdateAccount />
         </Route> */}
+        </PlantContext.Provider >
     </div>
   );
 }
