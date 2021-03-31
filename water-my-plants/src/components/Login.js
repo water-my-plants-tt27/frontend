@@ -133,6 +133,10 @@ const Input = styled.input`
     color: #224229;
     width: 100%;
     margin: 5% 0%;
+
+    &::placeholder {
+        color: #B1B7B3;
+    }
 `
 
 const Label = styled.label`

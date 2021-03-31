@@ -1,10 +1,12 @@
-import React, {useState, useEffect, useContext} from 'react'
-import axios from 'axios';
+import React, {useState, useContext} from 'react'
+import {useHistory} from 'react-router-dom'
 import styled from 'styled-components';
 import UserContext from '../contexts/userContext'
 
 import LeftBar from './LeftBar';
 import NavMenu from './NavMenu';
+
+import {axiosWithAuth} from '../helpers/axiosWithAuth'
 
 //STYLING
 const MyAccountContainer = styled.div`
@@ -44,29 +46,34 @@ const Input = styled.input`
     border: none;
     border-bottom: 2px solid #224229;
     width: 25vw;
-    color: #B1B7B3;
+    color: #224229;
     font-weight: 700;
     font-size: 17px;
     line-height: 23px;
-
     &:focus {
         outline: none;
-        color: #224229;
+    }
+
+    &::placeholder {
+        color: #B1B7B3;
     }
 `
  
 
 const UpdateAccount = () => {
     const {userInfo} = useContext(UserContext)
-    console.log('userInfo from context', userInfo)
+
     const initialUpdatedAccountValues ={
+        user_id: userInfo.user.user_id,
        name: userInfo.user.name,
-       password: '',
-       pwConfirm: '',
+       email: userInfo.user.email,
+    //    password: '',
+    //    pwConfirm: '',
        phone_number: userInfo.user.phone_number,
     }
     const [updatedAccountValues, setUpdatedAccountValues] = useState(initialUpdatedAccountValues)
     
+    const history = useHistory();
 
     const changeHandler = (e) => {
         setUpdatedAccountValues({ ...updatedAccountValues,
@@ -74,14 +81,18 @@ const UpdateAccount = () => {
         })
     }
 
-    const onSubmit = () =>{
-        axios.put('https://reqres.in/api/updateAccount', updatedAccountValues)
-        .then(res => {
-            console.log('res from UpdateAccount:', res)
-        })
-        .catch(err => {
-            console.log({'err from UpdateAccount:': err})
-        })
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        const id = updatedAccountValues.user_id
+        axiosWithAuth()
+            .put(`users/${id}`, updatedAccountValues)
+            .then(res => {
+                userInfo.setUser(res.data.updatedUser)
+                history.push('/myPlants')
+            })
+            .catch(err => {
+                console.log({'err from UpdateAccount:': err})
+            })
     }
 
    return (
@@ -104,7 +115,7 @@ const UpdateAccount = () => {
                             onChange={changeHandler}
                             placeholder='Name'
                             />
-                            <Input 
+                            {/* <Input 
                             type='password' 
                             name='password' 
                             value={updatedAccountValues.password}
@@ -117,7 +128,7 @@ const UpdateAccount = () => {
                             value={updatedAccountValues.pwConfirm}
                             onChange={changeHandler}
                             placeholder='Confirm Password'
-                            />
+                            /> */}
                             <Input 
                             type='text' 
                             name='phone_number' 
