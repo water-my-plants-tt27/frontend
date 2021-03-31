@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
     const token = localStorage.getItem('token');
 
     return axios.create({
-        // baseURL:'http://', // FIX THIS DEPENDING ON WHAT OUR SERvER IS!!!
+        baseURL: 'https://watermyplantsapi.herokuapp.com/api',
         headers: {
             authorization: token
         }

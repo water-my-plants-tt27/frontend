@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext } from 'react'
 import {useHistory, Link} from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+
+import UserContext from '../contexts/userContext'
 
 const initLoginVal = {
     email: '',
@@ -11,6 +13,8 @@ const initLoginVal = {
 export default function Login() {
     const [loginVal, setLoginVal]=useState(initLoginVal);
     const history = useHistory();
+    const {userInfo} = useContext(UserContext); //userInfo is object with user state and setUser function
+    console.log(userInfo)
 
     const handleChanges = e =>{
         setLoginVal({
@@ -22,8 +26,9 @@ export default function Login() {
         e.preventDefault();
         axios.post('https://watermyplantsapi.herokuapp.com/api/auth/login', loginVal)
         .then((resp)=>{
-            console.log(resp)
             setLoginVal(initLoginVal)
+            localStorage.setItem('token', resp.data.token)
+            userInfo.setUser(resp.data.user)
             history.push('/myPlants')
         })
         .catch((err)=>{
@@ -128,6 +133,10 @@ const Input = styled.input`
     color: #224229;
     width: 100%;
     margin: 5% 0%;
+
+    &::placeholder {
+        color: #B1B7B3;
+    }
 `
 
 const Label = styled.label`

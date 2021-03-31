@@ -176,7 +176,9 @@ const Input = styled.input`
 
     &:focus {
         outline: none;
-        color: #224229;
+    }
+    &::placeholder {
+        color: #B1B7B3;
     }
 `
 

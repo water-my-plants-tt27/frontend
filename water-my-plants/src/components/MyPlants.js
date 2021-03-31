@@ -7,7 +7,7 @@ import LeftBar from './LeftBar'
 import MyPlantsHeader from './MyPlantsHeader'
 import NavMenu from './NavMenu'
 import PlantCard from './PlantCard'
-import PlantContext from '../contexts/plantContext'
+import PlantContext from '../contexts/userContext'
 
 //Styling
 const MyPlantsContainer = styled.div`
