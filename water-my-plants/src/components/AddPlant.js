@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
+
+import { axiosWithAuth } from '../helpers/axiosWithAuth';
+import UserContext from '../contexts/userContext';
+import MyPlantDataContext from '../contexts/myPlantDataContext';
+import MyPlants from './MyPlants';
 
 //STYLING
 const AddPlantContainer = styled.div`
@@ -32,11 +37,35 @@ const WaterLightContainer = styled.div`
     justify-content: space-between;
 `
 
-const AddPlant = ({plant}) => {
+const AddPlant = ({plant, handleClose}) => {
     const [dayValue, setDayValue] = useState('');
+    const {userInfo} = useContext(UserContext);
+    const {myPlants} = useContext(MyPlantDataContext)
+    console.log('AddPlant plant', plant)
+    console.log('myPlants:', myPlants)
 
+   console.log('userInfo', userInfo)
     const changeHandler = (e) => {
+
         setDayValue(e.target.value)
+    }
+
+    const submitter = (e) => {
+        e.preventDefault();
+        const newPlantData = {
+            user_id: userInfo.user.user_id,
+            plant_id: plant.plant_id,
+            week_day_id: Number(dayValue),
+        }
+        console.log('newPlantData:', newPlantData)
+        axiosWithAuth()
+        .post(`/my-plants`, newPlantData)
+        .then(res => {
+            myPlants.setMyPlantData([...myPlants.myPlantData, res.data])
+            handleClose();
+            console.log('AddPlant res:', res)
+        })
+        .catch(err => {console.log({'AddPlant err:': err})})
     }
 
     return (
@@ -91,7 +120,7 @@ const AddPlant = ({plant}) => {
                             <div className='needs'>Light</div>
                             <div className='needsDetails'>{plant.light_level}</div>
                         </div>
-                        <button className='button'>Add Plant</button>
+                        <button className='button' onClick={submitter}>Add Plant</button>
                     </WaterLightContainer>
                 </PlantInfo>
             </PlantInfoContainer>

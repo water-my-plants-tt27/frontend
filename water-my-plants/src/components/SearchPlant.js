@@ -143,6 +143,7 @@ const SearchPlant = (props) => {
         }
     }
 
+
     return (
             <AddPlantDiv>
                 <CloseAddPlantDiv>
@@ -162,7 +163,7 @@ const SearchPlant = (props) => {
                     </datalist>
                  </AddPlantForm>
                  {
-                     searchValue ? <AddPlant plant={searchValue[0]}/> : null
+                     searchValue ? <AddPlant handleClose={handleClose} plant={searchValue[0]}/> : null
                  }
             </AddPlantDiv>
     )
