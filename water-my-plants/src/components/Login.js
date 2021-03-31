@@ -27,7 +27,7 @@ export default function Login() {
             history.push('/myPlants')
         })
         .catch((err)=>{
-            console.log(err)
+            console.log(err.response)
         })
 
     }
