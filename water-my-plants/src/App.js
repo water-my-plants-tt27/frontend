@@ -10,6 +10,9 @@ import Register from './components/Register';
 import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
 import UpdateAccount from './components/UpdateAccount';
+import MarketingPage from './components/MarketingPage';
+
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -20,10 +23,10 @@ function App() {
         <Route path='/myPlants'>
             <MyPlants />
         </Route>
-        <Route path='/login'>
+        <Route exact path='/login'>
           <Login />
         </Route>
-        <Route path='/register'>
+        <Route exact path='/register'>
           <Register />
         </Route>
         <Route path='/navMenu'>
@@ -34,8 +37,10 @@ function App() {
           </Route>
         <Route path='/updateAccount'>
           <UpdateAccount />
-        </Route>
-      </UserContext.Provider >
+        </Route> 
+        <Route path="/" component={MarketingPage} />
+        </PlantContext.Provider >
+
     </div>
   );
 }
