@@ -130,6 +130,7 @@ const SearchPlant = (props) => {
         }
     }
 
+
     return (
             <AddPlantDiv>
                 <CloseAddPlantDiv>
