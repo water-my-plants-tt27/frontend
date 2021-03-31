@@ -12,9 +12,10 @@ const initLoginVal = {
 
 export default function Login() {
     const [loginVal, setLoginVal]=useState(initLoginVal);
+    const [error, setError] = useState('');
+
     const history = useHistory();
     const {userInfo} = useContext(UserContext); //userInfo is object with user state and setUser function
-    console.log(userInfo)
 
     const handleChanges = e =>{
         setLoginVal({
@@ -32,7 +33,7 @@ export default function Login() {
             history.push('/myPlants')
         })
         .catch((err)=>{
-            console.log(err.response)
+            setError(err.response.data.message)
         })
 
     }
@@ -62,6 +63,9 @@ export default function Login() {
                             placeholder="Password">
                             </Input>
                         </Label>
+                        {
+                            error ? <ErrorDiv>{error}</ErrorDiv> : null
+                        }
                         <ButtonCont className="btn">
                             <button className='button'>LOGIN</button>
                             <LinkCont>
@@ -170,3 +174,9 @@ const LinkCont = styled.div`
 
     }
     `
+
+const ErrorDiv = styled.div`
+    font-size: 14px;
+    color: red;
+    margin-bottom: 10px;
+`
