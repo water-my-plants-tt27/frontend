@@ -27,6 +27,7 @@ Example of what to use:
   password: 'testPassword',
 }
 
+
 **BaseURL/auth/login (POST) - login a user**
 (test user is in the example)
 
@@ -42,8 +43,11 @@ Example of what to use:
   password: "testPassword"
 }
 
+
 **Users**
+
 BaseURL/users (GET) - returns all users
+
 BaseURL/users/:id (PUT) - updates a user
 
 Parameters:
@@ -76,6 +80,7 @@ Parameters:
 | water_schedule | string  | yes      | frequency of the water schedule   |
 | light_level    | string  | yes      | light level                       |
 | plant_image    | string  | yes      | Image of the plant                |
+
 
 
 **My Plants**
