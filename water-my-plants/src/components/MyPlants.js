@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+
+// import {useParams} from 'react-router-dom';
 
 //Component Import
+import {axiosWithAuth} from '../helpers/axiosWithAuth';
 import LeftBar from './LeftBar'
 import MyPlantsHeader from './MyPlantsHeader'
 import NavMenu from './NavMenu'
 import PlantCard from './PlantCard'
-import PlantContext from '../contexts/plantContext'
+import UserContext from '../contexts/userContext'
 
 //Styling
 const MyPlantsContainer = styled.div`
@@ -89,6 +91,23 @@ const fakePlantData = [
 ]
 
 const MyPlants = () => {
+    const [myPlantData, setMyPlantData]=useState(fakePlantData);
+    const {userInfo} = useContext(UserContext);
+    // const {id} = useParams();
+
+    console.log('MyPlant userInfo:', userInfo)
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/my-plants/${userInfo.user.user_id}`)
+        .then(res => {
+            setMyPlantData(res.data)
+            console.log('MyPlants res:', res)
+        })
+        .catch(err => {
+            console.log({'MyPlants err:': err})
+        })
+    }, [])
 
     return (
         <MyPlantsContainer>
@@ -99,6 +118,11 @@ const MyPlants = () => {
             <MyPlantsBody>
                 <MyPlantsHeader />
                 <Plants>
+                    {/* {
+                        myPlantData.map((plant) => {
+                            return <PlantCard key={plant.plant_id} plant={plant} />
+                        })
+                    } */}
                     {
                         fakePlantData.map((plant) => {
                             return <PlantCard key={plant.plant_id} plant={plant} />
