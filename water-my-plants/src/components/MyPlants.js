@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 //Component Import
 import LeftBar from './LeftBar'
 import MyPlantsHeader from './MyPlantsHeader'
 import NavMenu from './NavMenu'
 import PlantCard from './PlantCard'
+import PlantContext from '../contexts/plantContext'
 
 //Styling
 const MyPlantsContainer = styled.div`
