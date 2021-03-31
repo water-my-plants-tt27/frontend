@@ -93,10 +93,8 @@ const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState([]);
     const {userInfo} = useContext(UserContext);
 
-
-    useEffect(() => {
+    const fetchPlants = () => {
         const id = userInfo.user.user_id;
-        console.log('id:', id)
         axiosWithAuth()
         .get(`/my-plants/${id}`)
         .then(res => {
@@ -106,11 +104,15 @@ const MyPlants = () => {
         .catch(err => {
             console.log({'MyPlants err:': err})
         })
+    }
+
+    useEffect(() => {
+        fetchPlants();
     }, [])
 
     return (
         <MyPlantsContainer>
-            <MyPlantDataContext.Provider value={{myPlants: {myPlantData, setMyPlantData}}}>
+            <MyPlantDataContext.Provider value={fetchPlants}>
                 <NavMenuContainer className="navBar">
                     <NavMenu/>
                 </NavMenuContainer>
