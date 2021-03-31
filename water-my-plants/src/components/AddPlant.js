@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
+
+import { axiosWithAuth } from '../helpers/axiosWithAuth'
+import UserContext from '../contexts/userContext'
 
 //STYLING
 const AddPlantContainer = styled.div`
@@ -34,9 +37,23 @@ const WaterLightContainer = styled.div`
 
 const AddPlant = ({plant}) => {
     const [dayValue, setDayValue] = useState('');
+    const {userInfo} = useContext(UserContext);
 
+
+    //plant or dayValue to post?
     const changeHandler = (e) => {
+       e.preventDefault();
         setDayValue(e.target.value)
+        
+        const newPlantData = {
+            user_id: userInfo.user.user_id,
+            plant_id: plant.plant_id,
+            week_day_name: dayValue,
+        }
+        axiosWithAuth()
+        .post(`/my-plants`, newPlantData)
+        .then(res => {console.log('AddPlant res:', res)})
+        .catch(err => {console.log({'AddPlant err:': err})})
     }
 
     return (

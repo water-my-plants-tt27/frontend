@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-// import {useParams} from 'react-router-dom';
-
 //Component Import
 import {axiosWithAuth} from '../helpers/axiosWithAuth';
 import LeftBar from './LeftBar'
@@ -93,16 +91,14 @@ const fakePlantData = [
 const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState(fakePlantData);
     const {userInfo} = useContext(UserContext);
-    // const {id} = useParams();
-
-    console.log('MyPlant userInfo:', userInfo)
 
     useEffect(() => {
+        const id = userInfo.user.user_id;
         axiosWithAuth()
-        .get(`/my-plants/${userInfo.user.user_id}`)
+        .get(`/my-plants/${id}`)
         .then(res => {
             setMyPlantData(res.data)
-            console.log('MyPlants res:', res)
+            // console.log('MyPlants res:', res)
         })
         .catch(err => {
             console.log({'MyPlants err:': err})

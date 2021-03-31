@@ -23,18 +23,20 @@ const AddPlantForm = styled.form`
     flex-direction: column;
 `
 const Input = styled.input`
-    margin: 30px 0px 30px 0px;
+    margin: 18px 0px 20px 0px;
     border: none;
     border-bottom: 2px solid #224229;
     width: 25vw;
-    color: #B1B7B3;
+    color: #224229;
     font-weight: 700;
     font-size: 17px;
     line-height: 23px;
-
     &:focus {
         outline: none;
-        color: #224229;
+    }
+
+    &::placeholder {
+        color: #B1B7B3;
     }
 `
 const CloseAddPlantDiv = styled.div`
