@@ -13,7 +13,8 @@ const registerFormSchema = yup.object().shape({
         .matches(phoneRegExp, 'Phone number is not valid')
         .required('Phone Number is required'),
     password: yup.string()
-        .required('Password is required'),
+        .required('Password is required')
+        .min(8, 'Password must be at least 8 characters'),
     pwConf: yup.string()
         .required('Please confirm your password')
 })

@@ -78,6 +78,8 @@ export default function Register() {
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.name}</ErrorDiv>
+
                         <label>  
                             <Input
                             type="email"
@@ -88,6 +90,7 @@ export default function Register() {
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.email}</ErrorDiv>
                         {/* <Input 
                         placeholder="Phone Number"
                         country="US"
@@ -105,6 +108,7 @@ export default function Register() {
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.phone_number}</ErrorDiv>
                         <label>
                             <Input
                             type="password"
@@ -115,6 +119,7 @@ export default function Register() {
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.password}</ErrorDiv>
                         <label>
                             <Input
                             id="pwConf"
@@ -126,6 +131,7 @@ export default function Register() {
                             >
                             </Input>
                         </label>
+                        <ErrorDiv>{formErrors.pwConf}</ErrorDiv>
                         {
                             regValue.pwConf ? regValue.pwConf === regValue.password ? null : <ErrorDiv>Passwords do not match</ErrorDiv> : null
                         }
