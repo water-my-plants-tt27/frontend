@@ -11,7 +11,7 @@ const initRegValue={
     email:'',
     phone_number:'',
     password: '',
-    pwConfirm: ''
+    pwConf: ''
 }
 export default function Register() {
     const [regValue, setRegValue] = useState(initRegValue);
