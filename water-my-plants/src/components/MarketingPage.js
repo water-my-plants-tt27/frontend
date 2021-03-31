@@ -103,6 +103,11 @@ const MarketingContainer = styled.div`
         justify-content: center;
         align-items: center;
     }
+    .pic-text{
+        display: flex;
+        flex-direction: column;
+    }
+    
     .content h2{
         font-size: 2rem;
         text-align: center;
@@ -117,6 +122,7 @@ const MarketingContainer = styled.div`
     .content-img{
         width: 300px;
         margin-top: 1rem;
+        align-self: center;
     }
     .search-card{
         width: 350px;
@@ -188,7 +194,7 @@ const MarketingContainer = styled.div`
             margin-top: 6.5rem;
         }
         .content p{
-            width: 85%;
+            width: 95%;
             font-size: 1.3rem;
         }
         .search-card{
@@ -216,7 +222,51 @@ const MarketingContainer = styled.div`
         }
     }
     @media (min-width: 1024px){
-
+        .logo img{
+            width: 200px;
+            height: 200px;
+        }
+        .link{
+            font-size: 1.8rem;
+        }
+        .title{
+            width: 80%;
+        }
+        .title h1{
+            font-size: 6rem;
+            line-height: 6.5rem;
+        }
+        .marketing-content{
+            margin-top: 10rem;
+        }
+        .content{
+            // flex-direction: row;
+        }
+        .pic-text{
+            flex-direction: row-reverse;
+            width: 90%;
+        }
+        .content p{
+            font-size: 1.5rem;
+        }
+        .search-card{
+            width: 600px;
+        }
+        .register{
+            font-size: 3rem; 
+        }
+        .social-media{
+            margin-left: 30rem;
+        }
+        .footer h2{
+            font-size: 1.1rem;
+            margin-left: .5rem;
+            padding-right: 2rem;
+        }
+        .icon{
+            width: 2.5rem;
+            padding-left: 2.5rem;
+        }
     }
 `
 
@@ -248,31 +298,28 @@ const MarketingPage = () => {
                         <hr></hr>
                         <h2>Never Forget to Water Your Plants Again!</h2>
                         <hr></hr>
-                        <p><span>Water My Plants</span> allows you to manage the care of each of your house plants in one locations. Simply search for your plant, select your preferred watering day, and add your plant to your collection.</p>
-                        <p><span>Water My Plants</span> does all the work for you! Recommended watering and light details are already provided. You simply provide the water!</p>
-                        <img className="content-img" src={watering} alt="watering a plant" />
+                        <div className="pic-text">
+                            <p><span>Water My Plants</span> allows you to manage the care of each of your house plants in one locations. Simply search for your plant, select your preferred watering day, and add your plant to your collection.<br></br><br></br><span>Water My Plants</span> does all the work for you! Recommended watering and light details are already provided. You simply provide the water!</p>
+                            <img className="content-img" src={watering} alt="watering a plant" />
+                        </div>
                     </div>
                     <div className="content card-two">
                         <hr></hr>
                         <h2>Add Your Plants</h2>
                         <hr></hr>
-                        <p>Search for your plant from our large selection of houseplants. Each plant will show its recommended watering schedule and preferred lighting. </p>
-                        <p>Simply select the day that you would like to start your watering schedule and add your plant to your plant collection!</p>
-                        <img className="content-img search-card" src={addPlant} alt="add plant example" />
+                        <div className="pic-text">
+                            <p>Search for your plant from our large selection of houseplants. Each plant will show its recommended watering schedule and preferred lighting.<br></br><br></br>Simply select the day that you would like to start your watering schedule and add your plant to your plant collection!</p>
+                            <img className="content-img search-card" src={addPlant} alt="add plant example" />
+                        </div>
                     </div>
                     <div className="content card-three">
                         <hr></hr>
                         <h2>Detailed Plant Cards</h2>
                         <hr></hr>
-                        <p>Once your plants are added, you will see a detailed card of each plant added to your collection.</p>
-                        <img className="content-img" src={plantcard} alt="plant card example" />
-                    </div>
-                    <div className="content card-four">
-                        <hr></hr>   
-                        <h2>Edit Your Plants</h2>
-                        <hr></hr>
-                        <p>You can edit your preferred watering day or delete a plant from your collection at any time.</p>
-                        <img className="content-img" src={plant1} alt="house plant" />
+                        <div className="pic-text">
+                            <p>Once your plants are added, you will see a detailed card of each plant added to your collection.<br></br><br></br>Plant cards will provide you with all of the inforamtion you need to care for your plants. You can view the species name along with the common name for your plant.<br></br><br></br>Your watering schedule is custom for your schedule. You can edit your preferred watering days or delete a plant from your collection at any time.</p>
+                            <img className="content-img" src={plantcard} alt="plant card example" />
+                        </div>
                         <div className="register-banner">
                             <Link className="link register" to='/register'>Register and start watering today!</Link>
                         </div>
