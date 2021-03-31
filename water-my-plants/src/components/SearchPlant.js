@@ -1,11 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import styled from 'styled-components'
 import closeButton from '../images/close.svg'
 
 //Component Import
 import AddPlant from './AddPlant'
 import PlantCard from './PlantCard'
-import PlantContext from '../contexts/plantContext'
+
 
 //Styling
 const AddPlantDiv = styled.div`
@@ -111,10 +112,20 @@ const CloseAddPlantButton = styled.img`
 
 const SearchPlant = (props) => {
     const {toggleAccordion} = props;
-    const plants = useContext(PlantContext)
 
     const [formInput, setFormInput] = useState('')
     const [searchValue, setSearchValue] = useState('')
+    const [plants, setPlants] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://watermyplantsapi.herokuapp.com/api/plants')
+        .then(res => {
+          setPlants(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }, [])
 
     const handleClose = () => {
         setFormInput('')
