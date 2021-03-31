@@ -1,7 +1,7 @@
 
 import './App.css';
 import React, {useEffect, useState} from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 import UserContext from './contexts/userContext'
 
 import MyPlants from './components/MyPlants'
@@ -20,26 +20,28 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{userInfo: {user, setUser}}} >
-        <Route path='/myPlants'>
-            <MyPlants />
-        </Route>
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-        <Route exact path='/register'>
-          <Register />
-        </Route>
-        <Route path='/navMenu'>
-          <NavMenu />
-        </Route>
-        <Route path='/editPlant'>
-          <EditPlant />
-          </Route>
-        <Route path='/updateAccount'>
-          <UpdateAccount />
-        </Route> 
-        <Route path="/" component={MarketingPage} />
-        </PlantContext.Provider >
+          <Switch>
+            <Route path='/myPlants'>
+                <MyPlants />
+            </Route>
+            <Route exact path='/login'>
+              <Login />
+            </Route>
+            <Route exact path='/register'>
+              <Register />
+            </Route>
+            <Route path='/navMenu'>
+              <NavMenu />
+            </Route>
+            <Route path='/editPlant'>
+              <EditPlant />
+              </Route>
+            <Route path='/updateAccount'>
+              <UpdateAccount />
+            </Route> 
+            <Route path="/" component={MarketingPage} />
+          </Switch>
+        </UserContext.Provider >
 
     </div>
   );
