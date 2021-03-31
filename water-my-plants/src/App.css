@@ -197,6 +197,18 @@ h1 {
   font-family: "Raleway", sans-serif;
 }
 
+.button:disabled {
+  color: darkgray;
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  color: darkgray;
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
 .button:hover {
 	background-color: #224229;
 }
