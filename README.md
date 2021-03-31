@@ -1,12 +1,13 @@
 # frontend
 
-API documentation
+**API documentation**
+
 (You can also reference it in the backend repo in the Github organization)
 BaseURL:  https://watermyplantsapi.herokuapp.com/api
 
-List of Endpoints:
+**List of Endpoints:**
 
-Users (auth)
+**Users (auth)**
 BaseURL/auth/register (POST) - register a user
 (test user is in the example)
 
@@ -25,7 +26,8 @@ Example of what to use:
   phone_number: 'testPhoneNumber',
   password: 'testPassword',
 }
-BaseURL/auth/login (POST) - login a user
+
+**BaseURL/auth/login (POST) - login a user**
 (test user is in the example)
 
 Parameters:
@@ -40,7 +42,7 @@ Example of what to use:
   password: "testPassword"
 }
 
-Users
+**Users**
 BaseURL/users (GET) - returns all users
 BaseURL/users/:id (PUT) - updates a user
 
@@ -53,7 +55,8 @@ Parameters:
 | email          | string  | yes      | The email of the user            |
 
 
-Plants
+**Plants**
+
 BaseURL/plants (GET) - returns all plants
 
 BaseURL/plants/:id (GET) - gets an individual plant
@@ -75,7 +78,7 @@ Parameters:
 | plant_image    | string  | yes      | Image of the plant                |
 
 
-My Plants
+**My Plants**
 
 BaseURL/my-plants/:id (GET) - returns all my_plants from a user
 
