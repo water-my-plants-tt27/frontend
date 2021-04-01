@@ -215,7 +215,6 @@ const Input = styled.input`
     font-weight: 700;
     line-height: 23px;
     letter-spacing: 0em;
-    /* /* text-align: left; */
     color: #224229;
     width: 100%;
     margin: 5% 0%; 
@@ -278,12 +277,6 @@ const LinkCont = styled.div`
     @media (max-width: 1296px) {
         min-width: 100%;
     } 
-    /* @media (max-width: 768px) {
-        min-width: 363px;
-    } 
-    @media (max-width: 375px) {
-        min-width: 278px;
-    }        */
     `
 
     const Form = styled.form`
