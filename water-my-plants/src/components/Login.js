@@ -44,7 +44,7 @@ export default function Login() {
                 
                 <FormCont className="formContainer">
                     <h1>Account Login</h1>
-                    <FormInputs onSubmit={handleLogin}>
+                    <Form onSubmit={handleLogin}>
 
                             <Input
                             type="email"
@@ -74,7 +74,7 @@ export default function Login() {
                             </LinkCont>
                         </ButtonCont>
 
-                    </FormInputs>
+                    </Form>
                 </FormCont>
             </LoginContainer>
         </Page>
@@ -129,17 +129,14 @@ const FormCont = styled.div`
     @media (max-width: 375px) {
     width:86%;
     }
-
+    
 
     h1{
         padding: 1%;
         margin-bottom: 3%;
+        
     }
     `
-
-const FormInputs = styled.form`
-    width: 90%;
-`
 
 const Input = styled.input`
     border: none;
@@ -150,11 +147,14 @@ const Input = styled.input`
     font-weight: 700;
     line-height: 23px;
     letter-spacing: 0em;
-    text-align: left;
+    /* /* text-align: left; */
     color: #224229;
     width: 100%;
-    margin: 5% 0%;
+    margin: 5% 0%; 
 
+    &:focus {
+        outline: none;
+    }
     &::placeholder {
         color: #B1B7B3;
     }
@@ -163,52 +163,98 @@ const Input = styled.input`
 
 const ButtonCont = styled.div`
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
     
-`
+    @media (max-width: 1296px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    } 
+`   
     
     
 const LinkCont = styled.div`
     display: flex;
     align-items:flex-end;
     justify-content: flex-end;
-    min-width: 50%;
+    width: 100%;
     
-    div{
-        width: 2%;
-        text-align: center;
-        padding: 0% 1%;
-    }
     a{
         text-decoration: none;
-        color: #B1B7B3;
         font-family: Raleway;
-        font-size: 1rem;
+        font-size: .8rem;
         font-style: normal;
         font-weight: 700;
         line-height: 16px;
         letter-spacing: 0em;
         text-align: right;
-        font-family: 'Raleway', sans-serif;
-        
+        color: #B1B7B3;
         @media (max-width: 768px) {
             font-size: .75rem;
         }
         @media (max-width: 375px) {
             white-space: nowrap
         }
+        
     }
+    div{
+         width: 2%;
+         text-align: center;
+         padding: 0% 1%;
+        }
+    `
+    const Button = styled.button`
+    @media (max-width: 1296px) {
+        min-width: 100%;
+    } 
+    /* @media (max-width: 768px) {
+        min-width: 363px;
+    } 
+    @media (max-width: 375px) {
+        min-width: 278px;
+    }        */
     `
 
-const Button = styled.button`
-@media (max-width: 375px) {
-    min-width: 100px;
-}       
-`
+    const Form = styled.form`
+        display: flex;
+        flex-direction: column;
+        width:85%; 
+    `
 
 const ErrorDiv = styled.div`
     font-size: 14px;
     color: red;
     margin-bottom: 10px;
 `
+    
+    
+// const LinkCont = styled.div`
+//     display: flex;
+//     align-items:flex-end;
+//     justify-content: flex-end;
+//     min-width: 50%;
+    
+//     div{
+//         width: 2%;
+//         text-align: center;
+//         padding: 0% 1%;
+//     }
+//     a{
+//         text-decoration: none;
+//         color: #B1B7B3;
+//         font-family: Raleway;
+//         font-size: .9rem;
+//         font-style: normal;
+//         font-weight: 700;
+//         line-height: 16px;
+//         letter-spacing: 0em;
+//         text-align: right;
+//         font-family: 'Raleway', sans-serif;
+        
+//         @media (max-width: 768px) {
+//             font-size: .75rem;
+//         }
+//         @media (max-width: 375px) {
+//             white-space: nowrap
+//         }
+//     }
+//     `
+
