@@ -11,6 +11,7 @@ import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
 import UpdateAccount from './components/UpdateAccount';
 import MarketingPage from './components/MarketingPage';
+import PrivateRoute from './components/PrivateRoute'
 
 
 
@@ -21,25 +22,16 @@ function App() {
     <div className="App">
       <UserContext.Provider value={{userInfo: {user, setUser}}} >
           <Switch>
-            <Route path='/myPlants'>
-                <MyPlants />
-            </Route>
-            <Route exact path='/login'>
-              <Login />
-            </Route>
-            <Route exact path='/register'>
-              <Register />
-            </Route>
-            <Route path='/navMenu'>
-              <NavMenu />
-            </Route>
-            <Route path='/editPlant'>
-              <EditPlant />
-            </Route>
-            <Route path='/updateAccount'>
-              <UpdateAccount />
-            </Route> 
+            
+            <Route exact path='/register' component={Register}/>
+            <Route exact path='/login' component={Login}/>
+           
+            <PrivateRoute path='/myPlants'component={MyPlants}/>  
+            <PrivateRoute path='/editPlant' component={EditPlant}/>
+          
+            <PrivateRoute path='/updateAccount' component={UpdateAccount}/> 
             <Route path="/" component={MarketingPage} />
+
           </Switch>
         </UserContext.Provider >
 
