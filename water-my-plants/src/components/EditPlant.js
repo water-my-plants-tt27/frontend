@@ -86,7 +86,7 @@ const EditPlant = ({plantId, setEdit}) => {
                  default: 
                      setDayValue('RANDOM');
              }
-        setPlantToEdit(plantArr[0])
+        setPlantToEdit(plantArr[0]) // eslint-disable-next-line
     },[])
     
 
