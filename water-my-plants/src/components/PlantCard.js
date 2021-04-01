@@ -40,7 +40,7 @@ const PlantCard = ({plant}) => {
             case 'Friday':
                 return 'Monday';
             case 'Saturday':
-                return 'Tueday';
+                return 'Tuesday';
             case 'Sunday':
                 return 'Wednesday';
             default: 
