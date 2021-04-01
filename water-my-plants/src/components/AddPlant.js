@@ -77,31 +77,31 @@ const AddPlant = ({plant, handleClose}) => {
                         <WateringForm onChange={changeHandler}>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="monday" name="day" value='1'/>
-                                <label for="monday">Monday</label><br/>
+                                <label htmlFor="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
                                <input type="radio" id="tuesday" name="day" value="2"/>
-                                <label for="tuesday">Tuesday</label>
+                                <label htmlFor="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="wednesday" name="day" value="3"/>
-                                <label for="wednesday">Wednesday</label>
+                                <label htmlFor="wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="thursday" name="day" value="4"/>
-                                <label for="thursday">Thursday</label>
+                                <label htmlFor="thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="friday" name="day" value="5"/>
-                                <label for="friday">Friday</label>
+                                <label htmlFor="friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="saturday" name="day" value="6"/>
-                                <label for="saturday">Saturday</label>
+                                <label htmlFor="saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
                                 <input type="radio" id="sunday" name="day" value="7"/>
-                                <label for="sunday">Sunday</label>
+                                <label htmlFor="sunday">Sunday</label>
                             </div>
                         </WateringForm>
                     </div>
