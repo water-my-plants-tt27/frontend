@@ -20,6 +20,10 @@ const DetailsDiv = styled.div`
 const WaterLightDetails = styled.div`
     margin-bottom: 15px;
 `
+const WaterDay = styled.span`
+    font-weight: 700;
+    font-style: italic;
+`
 
 const PlantCard = ({plant}) => {
     
@@ -47,12 +51,12 @@ const PlantCard = ({plant}) => {
     const waterDays = () => {
         if (plant.water_schedule === 'Once per week' || plant.water_schedule === 'Every 14 days') {
             return (
-                <span> - {plant.week_day_name}</span>
+                <WaterDay> - {plant.week_day_name}</WaterDay>
             )
         } else if (plant.water_schedule === 'Twice per week') {
             const day = secondDay(plant.week_day_name)
             return (
-                <span> - {plant.week_day_name} / {day}</span>
+                <WaterDay> - {plant.week_day_name} / {day}</WaterDay>
             )
         }
     }
