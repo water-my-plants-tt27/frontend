@@ -2,7 +2,6 @@ import React, {useState, useContext } from 'react'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
-
 import UserContext from '../contexts/userContext'
 
 const initLoginVal = {
