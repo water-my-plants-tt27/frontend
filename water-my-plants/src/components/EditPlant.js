@@ -103,7 +103,7 @@ const EditPlant = ({plantId, setEdit}) => {
     
 
     const changeHandler = (e) => {
-        setDayValue(e.target.value)
+        setDayValue(Number(e.target.value))
     }
 
     const updatePlant = () => {
@@ -113,6 +113,7 @@ const EditPlant = ({plantId, setEdit}) => {
             week_day_id: Number(dayValue),
         }
 
+        console.log('newPlantData', newPlantData)
         axiosWithAuth()
         .put(`/my-plants/${plantToEdit.my_plant_id}`, newPlantData)
         .then(res => {
@@ -157,33 +158,33 @@ const EditPlant = ({plantId, setEdit}) => {
                 <PlantInfo>
                     <div>
                         <div className='needs'>Start Watering</div>
-                        <WateringForm onChange={changeHandler}>
+                        <WateringForm >
                             <div className='dayCheckbox' >
-                                <input type="radio" id="monday" name="day" value='1' checked={dayValue == 1}/>
+                                <input type="radio" id="monday" name="day" value={1} onChange={changeHandler} checked={dayValue == 1}/>
                                 <label htmlFor="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
-                               <input type="radio" id="tuesday" name="day" value="2" checked={dayValue == 2}/>
+                               <input type="radio" id="tuesday" name="day" value={2} onChange={changeHandler} checked={dayValue == 2}/>
                                 <label htmlFor="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Wednesday" name="day" value="3" checked={dayValue == 3}/>
+                                <input type="radio" id="Wednesday" name="day" value={3} onChange={changeHandler} checked={dayValue == 3}/>
                                 <label htmlFor="Wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Thursday" name="day" value="4" checked={dayValue == 4}/>
+                                <input type="radio" id="Thursday" name="day" value={4} onChange={changeHandler} checked={dayValue == 4}/>
                                 <label htmlFor="Thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Friday" name="day" value="5" checked={dayValue == 5}/>
+                                <input type="radio" id="Friday" name="day" value={5} onChange={changeHandler} checked={dayValue == 5}/>
                                 <label htmlFor="Friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Saturday" name="day" value="6" checked={dayValue == 6}/>
+                                <input type="radio" id="Saturday" name="day" value={6} onChange={changeHandler} checked={dayValue == 6}/>
                                 <label htmlFor="Saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Sunday" name="day" value="7" checked={dayValue == 7}/>
+                                <input type="radio" id="Sunday" name="day" value={7} onChange={changeHandler} checked={dayValue == 7}/>
                                 <label htmlFor="Sunday">Sunday</label>
                             </div>
                         </WateringForm>

@@ -12,7 +12,17 @@ const CardContainer = styled.div`
     margin: 15px;
     box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
     overflow: auto;
+    .editButton{
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+        color: #CBAD91;
+        cursor: pointer;
+    }
+    .editButton: hover{
+        color: #224229;
+    }
 `
+
 const Image = styled.img`
     max-width: 270px;
     object-fit: contain;
@@ -83,7 +93,7 @@ const PlantCard = ({plant, editSet}) => {
                     <div className='needsDetails'>{plant.light_level}</div>
                 </WaterLightDetails>
             </DetailsDiv>
-            <div onClick={() => editSet(plant.my_plant_id)}>Edit Plant</div>
+            <div  className='editButton' onClick={() => editSet(plant.my_plant_id)}>Edit Plant</div>
             {/* <details>
                 <summary>Edit</summary>
                 <EditPlant plant={plant}/>

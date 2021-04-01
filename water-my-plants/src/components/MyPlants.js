@@ -94,6 +94,7 @@ const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState([]);
     const [edit, setEdit]= useState(false);
     const [plantId, setPlantId] = useState(null);
+    const [userId, setUserId] = useState(null);
     const {userInfo} = useContext(UserContext);
     // console.log('myPlantData', myPlantData)
 
@@ -105,7 +106,18 @@ const MyPlants = () => {
     }
 
     const fetchPlants = () => {
-        const id = userInfo.user.user_id;
+
+        if (!userInfo.user.user_id){
+        console.log('useEffect userInfo', userInfo)
+        const iD = localStorage.getItem('userId')
+        axiosCall(iD)
+    } else {
+       axiosCall(userInfo.user.user_id);
+    }
+
+    }
+
+        const axiosCall = (id) => {
         axiosWithAuth()
         .get(`/my-plants/${id}`)
         .then(res => {
