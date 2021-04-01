@@ -39,7 +39,7 @@ const WaterLightContainer = styled.div`
 const AddPlant = ({plant, handleClose}) => {
     const [dayValue, setDayValue] = useState('');
     const {userInfo} = useContext(UserContext);
-    const fetchPlants = useContext(MyPlantDataContext)
+    const plantInfo = useContext(MyPlantDataContext)
 
     const changeHandler = (e) => {
         setDayValue(e.target.value)
@@ -56,7 +56,7 @@ const AddPlant = ({plant, handleClose}) => {
         axiosWithAuth()
             .post(`/my-plants`, newPlantData)
             .then(res => {
-                fetchPlants();
+                plantInfo.fetchPlants();
                 handleClose();
             })
             .catch(err => {console.log({'AddPlant err:': err})})

@@ -9,6 +9,7 @@ import NavMenu from './NavMenu';
 import PlantCard from './PlantCard'
 import UserContext from '../contexts/userContext';
 import MyPlantDataContext from '../contexts/myPlantDataContext';
+import EditPlant from './EditPlant';
 
 //Styling
 const MyPlantsContainer = styled.div`
@@ -91,15 +92,37 @@ const NavMenuContainer = styled.div`
 
 const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState([]);
+    const [edit, setEdit]= useState(false);
+    const [plantId, setPlantId] = useState(null);
+    const [userId, setUserId] = useState(null);
     const {userInfo} = useContext(UserContext);
+    // console.log('myPlantData', myPlantData)
+
+    const editSet = (plant_id) => {
+    //    console.log('plant_id from editSet', plant_id)
+        setEdit(!edit);
+        setPlantId(plant_id);
+
+    }
 
     const fetchPlants = () => {
-        const id = userInfo.user.user_id;
+
+        if (!userInfo.user.user_id){
+        console.log('useEffect userInfo', userInfo)
+        const iD = localStorage.getItem('userId')
+        axiosCall(iD)
+    } else {
+       axiosCall(userInfo.user.user_id);
+    }
+
+    }
+
+        const axiosCall = (id) => {
         axiosWithAuth()
         .get(`/my-plants/${id}`)
         .then(res => {
-            setMyPlantData(res.data)
             // console.log('MyPlants res:', res)
+            setMyPlantData(res.data)
         })
         .catch(err => {
             console.log({'MyPlants err:': err})
@@ -112,7 +135,7 @@ const MyPlants = () => {
 
     return (
         <MyPlantsContainer>
-            <MyPlantDataContext.Provider value={fetchPlants}>
+            <MyPlantDataContext.Provider value={{plantInfo: {myPlantData, setMyPlantData, fetchPlants}}}>
                 <NavMenuContainer className="navBar">
                     <NavMenu/>
                 </NavMenuContainer>
@@ -123,10 +146,13 @@ const MyPlants = () => {
                         {
                             myPlantData.length !== 0 ?
                             myPlantData.map((plant) => {
-                                return <PlantCard key={plant.my_plant_id} plant={plant} />
+                                return <PlantCard key={plant.my_plant_id} plant={plant} editSet={editSet}>
+                                </PlantCard>
                             })
                             : <p>Add some cool flora!</p>
                         }
+                        { edit && <EditPlant setEdit={setEdit} plantId={plantId}/>}
+
                         {/* {
                             fakePlantData.map((plant) => {
                                 return <PlantCard key={plant.plant_id} plant={plant} />

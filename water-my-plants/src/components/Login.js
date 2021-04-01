@@ -27,8 +27,10 @@ export default function Login() {
         e.preventDefault();
         axios.post('https://watermyplantsapi.herokuapp.com/api/auth/login', loginVal)
         .then((resp)=>{
+            console.log('login resp', resp)
             setLoginVal(initLoginVal)
             localStorage.setItem('token', resp.data.token)
+            localStorage.setItem('userId', resp.data.user.user_id )
             userInfo.setUser(resp.data.user)
             history.push('/myPlants')
         })
