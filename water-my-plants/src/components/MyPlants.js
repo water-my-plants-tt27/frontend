@@ -92,8 +92,17 @@ const NavMenuContainer = styled.div`
 
 const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState([]);
+    const [edit, setEdit]= useState(false);
+    const [plantId, setPlantId] = useState(null);
     const {userInfo} = useContext(UserContext);
     console.log('myPlantData', myPlantData)
+
+    const editSet = (plant_id) => {
+       console.log('plant_id from editSet', plant_id)
+        setEdit(!edit);
+        setPlantId(plant_id);
+
+    }
 
     const fetchPlants = () => {
         const id = userInfo.user.user_id;
@@ -125,11 +134,13 @@ const MyPlants = () => {
                         {
                             myPlantData.length !== 0 ?
                             myPlantData.map((plant) => {
-                                return <PlantCard key={plant.my_plant_id} plant={plant} >
+                                return <PlantCard key={plant.my_plant_id} plant={plant} editSet={editSet}>
                                 </PlantCard>
                             })
                             : <p>Add some cool flora!</p>
                         }
+                        { edit && <EditPlant setEdit={setEdit} plantId={plantId}/>}
+
                         {/* {
                             fakePlantData.map((plant) => {
                                 return <PlantCard key={plant.plant_id} plant={plant} />

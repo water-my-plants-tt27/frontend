@@ -28,7 +28,7 @@ const WaterDay = styled.span`
     font-style: italic;
 `
 
-const PlantCard = ({plant}) => {
+const PlantCard = ({plant, editSet}) => {
     // console.log('PlantCard plant', plant)
     const secondDay = (day) => {
        switch (day) {
@@ -83,10 +83,11 @@ const PlantCard = ({plant}) => {
                     <div className='needsDetails'>{plant.light_level}</div>
                 </WaterLightDetails>
             </DetailsDiv>
-            <details>
+            <div onClick={() => editSet(plant.my_plant_id)}>Edit Plant</div>
+            {/* <details>
                 <summary>Edit</summary>
                 <EditPlant plant={plant}/>
-            </details>
+            </details> */}
             {/* <EditLink /> */}
         </CardContainer>
     )

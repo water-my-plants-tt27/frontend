@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import styled from 'styled-components'
 
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
@@ -52,12 +52,46 @@ const EditButton = styled.button`
 // does not rerender since it is still on current page
 // axios calls (delete says error but upon reload plant is gone, put gets back a message as res.data, also unsure should it be plant id or user id)
 
-const EditPlant = ({plant}) => {
-    const [dayValue, setDayValue] = useState('');
-    const plantInfo = useContext(MyPlantDataContext)
-
-    // console.log('plantInfo from EP', plantInfo)
+const EditPlant = ({plantId, setEdit}) => {
+    const [dayValue, setDayValue] = useState(null);
+    const [plantToEdit, setPlantToEdit] = useState([]);
+    const plantInfo = useContext(MyPlantDataContext);
+    
+    console.log('plantInfo from EP', plantInfo)
     // console.log('plant from EP', plant)
+    console.log('dayValue', dayValue)
+    console.log('plantToEdit ', plantToEdit )
+    
+    useEffect (() => {
+        const plantArr = plantInfo.plantInfo.myPlantData.filter(item => item.my_plant_id === plantId)  
+        switch (plantArr[0].week_day_name) {
+                case 'Monday':
+                     setDayValue(1);
+                     break;
+                 case 'Tuesday':
+                     setDayValue(2);
+                     break;
+                 case 'Wednesday':
+                     setDayValue(3);
+                     break;
+                 case 'Thursday':
+                     setDayValue(4);
+                     break;
+                 case 'Friday':
+                     setDayValue(5);
+                     break;
+                 case 'Saturday':
+                     setDayValue(6);
+                     break;
+                 case 'Sunday':
+                     setDayValue(7);
+                     break;
+                 default: 
+                     setDayValue('RANDOM');
+             }
+        setPlantToEdit(plantArr[0])
+    },[])
+    
 
     const changeHandler = (e) => {
         setDayValue(e.target.value)
@@ -65,14 +99,16 @@ const EditPlant = ({plant}) => {
 
     const updatePlant = () => {
         const newPlantData = {
-            user_id: plant.user_id,
-            plant_id: plant.my_plant_id,
+            user_id: plantToEdit.user_id,
+            plant_id: plantToEdit.my_plant_id,
             week_day_id: Number(dayValue),
         }
 
         axiosWithAuth()
-        .put(`/my-plants/${plant.user_id}`, newPlantData)
+        .put(`/my-plants/${plantToEdit.user_id}`, newPlantData)
         .then(res => {
+            plantInfo.plantInfo.fetchPlants();
+            setEdit(false);
             // plantInfo.setMyPlantData(res.data)
             console.log('resPut from EP', res)
         })
@@ -87,10 +123,10 @@ const EditPlant = ({plant}) => {
     // }
     const deletePlant = () => {
         axiosWithAuth()
-        .delete(`/my-plants/${plant.my_plant_id}`)
+        .delete(`/my-plants/${plantToEdit.my_plant_id}`)
         .then(res => {
             console.log('resDelete from EP', res)
-            // deleter(plant.my_plant_id)
+            // deleter(plantToEdit.my_plant_id)
         })
         .catch(err => {
             console.log({'errDelete from EP': err})
@@ -99,41 +135,43 @@ const EditPlant = ({plant}) => {
 
 //     //TODO: add class checked to selected options
 
+
+    console.log('PlantToEdit', plantToEdit)
     return (
         <AddPlantContainer>
             <PlantInfoContainer>
-                <div className='plantName'>{plant.plant_name}</div>
-                <div className='plantSpecies'>{plant.species_name}</div>
+                <div className='plantName'>{plantToEdit.plant_name}</div>
+                <div className='plantSpecies'>{plantToEdit.species_name}</div>
                 <PlantInfo>
                     <div>
                         <div className='needs'>Start Watering</div>
                         <WateringForm onChange={changeHandler}>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="monday" name="day" value="1"/>
+                                <input type="radio" id="monday" name="day" value='1' checked={dayValue === 1}/>
                                 <label htmlFor="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
-                               <input type="radio" id="tuesday" name="day" value="2"/>
+                               <input type="radio" id="tuesday" name="day" value="2" checked={dayValue === 2}/>
                                 <label htmlFor="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Wednesday" name="day" value="3"/>
+                                <input type="radio" id="Wednesday" name="day" value="3" checked={dayValue === 3}/>
                                 <label htmlFor="Wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Thursday" name="day" value="4"/>
+                                <input type="radio" id="Thursday" name="day" value="4" checked={dayValue === 4}/>
                                 <label htmlFor="Thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Friday" name="day" value="5"/>
+                                <input type="radio" id="Friday" name="day" value="5" checked={dayValue === 5}/>
                                 <label htmlFor="Friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Saturday" name="day" value="6"/>
+                                <input type="radio" id="Saturday" name="day" value="6" checked={dayValue === 6}/>
                                 <label htmlFor="Saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Sunday" name="day" value="7"/>
+                                <input type="radio" id="Sunday" name="day" value="7" checked={dayValue === 7}/>
                                 <label htmlFor="Sunday">Sunday</label>
                             </div>
                         </WateringForm>
@@ -141,11 +179,11 @@ const EditPlant = ({plant}) => {
                     <WaterLightContainer>
                         <div>
                             <div className='needs'> Watering Schedule</div>
-                            <div className='needsDetails'>{plant.water_schedule}</div>
+                            <div className='needsDetails'>{plantToEdit.water_schedule}</div>
                         </div>
                         <div>
                             <div className='needs'>Light</div>
-                            <div className='needsDetails'>{plant.light_level}</div>
+                            <div className='needsDetails'>{plantToEdit.light_level}</div>
                         </div>
                         <EditButton onClick={updatePlant}>Update Plant</EditButton>
                         <EditButton onClick={deletePlant}>Delete Plant</EditButton>
