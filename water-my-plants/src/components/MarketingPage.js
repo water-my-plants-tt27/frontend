@@ -2,14 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-
 // images
 import logo from '../images/logo.svg';
 import plantBanner from '../images/houseplants.jpeg';
 import watering from '../images/watering.jpeg';
 import plantcard from '../images/plantcard.svg';
 import addPlant from '../images/Add-plant.svg';
-import plant1 from '../images/plant1.jpeg';
 import insta from '../images/instagram.png';
 import facebook from '../images/facebook.png';
 import twitter from '../images/twitter.png';
@@ -42,7 +40,6 @@ const MarketingContainer = styled.div`
         width: 100px;
         height: 100px;
         margin-left: 1rem;
-    
     }
     .link{
         text-decoration: none;
@@ -207,7 +204,7 @@ const MarketingContainer = styled.div`
         }
         .footer{
             flex-direction: row;
-            justify-content: left;
+            justify-content: space-between;
             align-items: center;
         }
         .footer h2{
@@ -215,7 +212,7 @@ const MarketingContainer = styled.div`
             margin-left: .5rem;
         }
         .social-media{
-            margin-left: 28rem;
+            margin-right: .6rem;
         }
         .icon{
             width: 2rem;
@@ -223,8 +220,14 @@ const MarketingContainer = styled.div`
     }
     @media (min-width: 1024px){
         .logo img{
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
+        }
+        .img-banner{
+            height: 50vh;
+        }
+        .content h2{
+            font-size: 2.5rem;
         }
         .link{
             font-size: 1.8rem;
@@ -239,12 +242,12 @@ const MarketingContainer = styled.div`
         .marketing-content{
             margin-top: 10rem;
         }
-        .content{
-            // flex-direction: row;
-        }
         .pic-text{
             flex-direction: row-reverse;
-            width: 90%;
+            width: 80%;
+        }
+        .card-two{
+            flex-direction: row;
         }
         .content p{
             font-size: 1.5rem;
@@ -303,11 +306,11 @@ const MarketingPage = () => {
                             <img className="content-img" src={watering} alt="watering a plant" />
                         </div>
                     </div>
-                    <div className="content card-two">
+                    <div className="content">
                         <hr></hr>
                         <h2>Add Your Plants</h2>
                         <hr></hr>
-                        <div className="pic-text">
+                        <div className="pic-text card-two">
                             <p>Search for your plant from our large selection of houseplants. Each plant will show its recommended watering schedule and preferred lighting.<br></br><br></br>Simply select the day that you would like to start your watering schedule and add your plant to your plant collection!</p>
                             <img className="content-img search-card" src={addPlant} alt="add plant example" />
                         </div>
@@ -317,11 +320,11 @@ const MarketingPage = () => {
                         <h2>Detailed Plant Cards</h2>
                         <hr></hr>
                         <div className="pic-text">
-                            <p>Once your plants are added, you will see a detailed card of each plant added to your collection.<br></br><br></br>Plant cards will provide you with all of the inforamtion you need to care for your plants. You can view the species name along with the common name for your plant.<br></br><br></br>Your watering schedule is custom for your schedule. You can edit your preferred watering days or delete a plant from your collection at any time.</p>
+                            <p>Once your plants are added, you will see a detailed card of each plant in your collection.<br></br><br></br>Custom plant cards provide you with all of the information needed to care for each plant. You can view the species name, along with the common name, to get to know your plants better.<br></br><br></br>Your watering schedule is custom based on your initial selection. You can edit your preferred watering days or delete a plant from your collection at any time.</p>
                             <img className="content-img" src={plantcard} alt="plant card example" />
                         </div>
                         <div className="register-banner">
-                            <Link className="link register" to='/register'>Register and start watering today!</Link>
+                            <Link className="link register" to='/register'>Register & Get Your Plants Wet Today!</Link>
                         </div>
                     </div>
                 </section>
