@@ -9,6 +9,7 @@ import NavMenu from './NavMenu';
 import PlantCard from './PlantCard'
 import UserContext from '../contexts/userContext';
 import MyPlantDataContext from '../contexts/myPlantDataContext';
+import EditPlant from './EditPlant';
 
 //Styling
 const MyPlantsContainer = styled.div`
@@ -92,14 +93,15 @@ const NavMenuContainer = styled.div`
 const MyPlants = () => {
     const [myPlantData, setMyPlantData]=useState([]);
     const {userInfo} = useContext(UserContext);
+    console.log('myPlantData', myPlantData)
 
     const fetchPlants = () => {
         const id = userInfo.user.user_id;
         axiosWithAuth()
         .get(`/my-plants/${id}`)
         .then(res => {
+            console.log('MyPlants res:', res)
             setMyPlantData(res.data)
-            // console.log('MyPlants res:', res)
         })
         .catch(err => {
             console.log({'MyPlants err:': err})
@@ -112,7 +114,7 @@ const MyPlants = () => {
 
     return (
         <MyPlantsContainer>
-            <MyPlantDataContext.Provider value={fetchPlants}>
+            <MyPlantDataContext.Provider value={{plantInfo: {myPlantData, setMyPlantData, fetchPlants}}}>
                 <NavMenuContainer className="navBar">
                     <NavMenu/>
                 </NavMenuContainer>
@@ -123,7 +125,8 @@ const MyPlants = () => {
                         {
                             myPlantData.length !== 0 ?
                             myPlantData.map((plant) => {
-                                return <PlantCard key={plant.my_plant_id} plant={plant} />
+                                return <PlantCard key={plant.my_plant_id} plant={plant} >
+                                </PlantCard>
                             })
                             : <p>Add some cool flora!</p>
                         }
