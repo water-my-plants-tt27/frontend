@@ -44,8 +44,8 @@ export default function Login() {
                 
                 <FormCont className="formContainer">
                     <h1>Account Login</h1>
-                    <form onSubmit={handleLogin}>
-                        <Label>
+                    <FormInputs onSubmit={handleLogin}>
+
                             <Input
                             type="email"
                             name="email"
@@ -53,8 +53,7 @@ export default function Login() {
                             onChange={handleChanges}
                             placeholder="Email">
                             </Input>
-                        </Label>
-                        <Label>
+
                             <Input 
                             type="password"
                             name="password"
@@ -62,7 +61,7 @@ export default function Login() {
                             onChange={handleChanges}
                             placeholder="Password">
                             </Input>
-                        </Label>
+
                         {
                             error ? <ErrorDiv>{error}</ErrorDiv> : null
                         }
@@ -75,7 +74,7 @@ export default function Login() {
                             </LinkCont>
                         </ButtonCont>
 
-                    </form>
+                    </FormInputs>
                 </FormCont>
             </LoginContainer>
         </Page>
@@ -117,12 +116,17 @@ const FormCont = styled.div`
     flex-direction: column;
     align-items: center;
 
+
     h1{
         padding: 1%;
         margin-bottom: 3%;
         
     }
     `
+
+const FormInputs = styled.form`
+    width: 90%;
+`
 
 const Input = styled.input`
     border: none;
@@ -143,18 +147,19 @@ const Input = styled.input`
     }
 `
 
-const Label = styled.label`
-`
 
 const ButtonCont = styled.div`
-    display: flex;`
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+`
     
     
 const LinkCont = styled.div`
     display: flex;
     align-items:flex-end;
     justify-content: flex-end;
-    width: 100%;
+    min-width: 50%;
     div{
         width: 2%;
         text-align: center;
