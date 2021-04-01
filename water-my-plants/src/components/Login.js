@@ -70,7 +70,7 @@ export default function Login() {
                         <ButtonCont className="btn">
                             <Button className='button buttonMobile'>LOGIN</Button>
                             <LinkCont>
-                                <a href='#'> Forgot Password  </a>
+                                <a href='/'> Forgot Password  </a>
                                 <div> | </div>
                                 <a href='/register'>  Create Account </a>
                             </LinkCont>

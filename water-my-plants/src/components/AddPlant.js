@@ -56,7 +56,7 @@ const AddPlant = ({plant, handleClose}) => {
         axiosWithAuth()
             .post(`/my-plants`, newPlantData)
             .then(res => {
-                plantInfo.fetchPlants();
+                plantInfo.plantInfo.fetchPlants();
                 handleClose();
             })
             .catch(err => {console.log({'AddPlant err:': err})})

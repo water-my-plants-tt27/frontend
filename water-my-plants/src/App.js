@@ -7,7 +7,6 @@ import UserContext from './contexts/userContext'
 import MyPlants from './components/MyPlants'
 import Login from './components/Login'
 import Register from './components/Register';
-import NavMenu from './components/NavMenu';
 import EditPlant from './components/EditPlant';
 import UpdateAccount from './components/UpdateAccount';
 import MarketingPage from './components/MarketingPage';
