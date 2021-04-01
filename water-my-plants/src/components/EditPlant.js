@@ -9,16 +9,25 @@ const AddPlantContainer = styled.div`
     width: 40vw;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 30px;
-    position: absolute;
+    position: fixed;
+    top: 25%;
+    left: 30%;
     background-color: white;
+    padding: .9rem 0rem;
+    box-shadow: 0px 30px 60px -40px rgba(130, 70, 0, 0.5);
 `
 const PlantInfoContainer = styled.div`
     width: 100%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: center; 
     padding: 6px 0px 6px 20px;
+    .editPlantHeader{
+        width: 100%;
+    }
 `
 const PlantInfo = styled.div`
     display: flex;
@@ -141,8 +150,10 @@ const EditPlant = ({plantId, setEdit}) => {
     return (
         <AddPlantContainer>
             <PlantInfoContainer>
+                <div className='editPlantHeader'>
                 <div className='plantName'>{plantToEdit.plant_name}</div>
                 <div className='plantSpecies'>{plantToEdit.species_name}</div>
+                </div>
                 <PlantInfo>
                     <div>
                         <div className='needs'>Start Watering</div>
