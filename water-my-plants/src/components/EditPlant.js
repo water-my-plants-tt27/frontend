@@ -100,12 +100,12 @@ const EditPlant = ({plantId, setEdit}) => {
     const updatePlant = () => {
         const newPlantData = {
             user_id: plantToEdit.user_id,
-            plant_id: plantToEdit.my_plant_id,
+            my_plant_id: plantToEdit.my_plant_id,
             week_day_id: Number(dayValue),
         }
 
         axiosWithAuth()
-        .put(`/my-plants/${plantToEdit.user_id}`, newPlantData)
+        .put(`/my-plants/${plantToEdit.my_plant_id}`, newPlantData)
         .then(res => {
             plantInfo.plantInfo.fetchPlants();
             setEdit(false);
@@ -119,18 +119,19 @@ const EditPlant = ({plantId, setEdit}) => {
 
     // const deleter = (id) =>{
     //     console.log('id from EP', id)
-    //     plantInfo.setMyPlantData(plantInfo.myPlantData(filter(item => (item.id !== Number(id)))))
+    //     plantInfo.plantInfo.setMyPlantData(plantInfo.plantInfo.myPlantData.filter(item => (item.id !== Number(id))))
     // }
     const deletePlant = () => {
         axiosWithAuth()
         .delete(`/my-plants/${plantToEdit.my_plant_id}`)
         .then(res => {
             console.log('resDelete from EP', res)
-            // deleter(plantToEdit.my_plant_id)
         })
         .catch(err => {
             console.log({'errDelete from EP': err})
         })
+        plantInfo.plantInfo.fetchPlants();
+        setEdit(false);
     }
 
 //     //TODO: add class checked to selected options
@@ -147,31 +148,31 @@ const EditPlant = ({plantId, setEdit}) => {
                         <div className='needs'>Start Watering</div>
                         <WateringForm onChange={changeHandler}>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="monday" name="day" value='1' checked={dayValue === 1}/>
+                                <input type="radio" id="monday" name="day" value='1' checked={dayValue == 1}/>
                                 <label htmlFor="monday">Monday</label><br/>
                             </div>
                             <div className='dayCheckbox' >
-                               <input type="radio" id="tuesday" name="day" value="2" checked={dayValue === 2}/>
+                               <input type="radio" id="tuesday" name="day" value="2" checked={dayValue == 2}/>
                                 <label htmlFor="tuesday">Tuesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Wednesday" name="day" value="3" checked={dayValue === 3}/>
+                                <input type="radio" id="Wednesday" name="day" value="3" checked={dayValue == 3}/>
                                 <label htmlFor="Wednesday">Wednesday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Thursday" name="day" value="4" checked={dayValue === 4}/>
+                                <input type="radio" id="Thursday" name="day" value="4" checked={dayValue == 4}/>
                                 <label htmlFor="Thursday">Thursday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Friday" name="day" value="5" checked={dayValue === 5}/>
+                                <input type="radio" id="Friday" name="day" value="5" checked={dayValue == 5}/>
                                 <label htmlFor="Friday">Friday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Saturday" name="day" value="6" checked={dayValue === 6}/>
+                                <input type="radio" id="Saturday" name="day" value="6" checked={dayValue == 6}/>
                                 <label htmlFor="Saturday">Saturday</label>
                             </div>
                             <div className='dayCheckbox' >
-                                <input type="radio" id="Sunday" name="day" value="7" checked={dayValue === 7}/>
+                                <input type="radio" id="Sunday" name="day" value="7" checked={dayValue == 7}/>
                                 <label htmlFor="Sunday">Sunday</label>
                             </div>
                         </WateringForm>

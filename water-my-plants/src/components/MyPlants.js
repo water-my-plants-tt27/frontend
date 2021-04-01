@@ -95,10 +95,10 @@ const MyPlants = () => {
     const [edit, setEdit]= useState(false);
     const [plantId, setPlantId] = useState(null);
     const {userInfo} = useContext(UserContext);
-    console.log('myPlantData', myPlantData)
+    // console.log('myPlantData', myPlantData)
 
     const editSet = (plant_id) => {
-       console.log('plant_id from editSet', plant_id)
+    //    console.log('plant_id from editSet', plant_id)
         setEdit(!edit);
         setPlantId(plant_id);
 
@@ -109,7 +109,7 @@ const MyPlants = () => {
         axiosWithAuth()
         .get(`/my-plants/${id}`)
         .then(res => {
-            console.log('MyPlants res:', res)
+            // console.log('MyPlants res:', res)
             setMyPlantData(res.data)
         })
         .catch(err => {
