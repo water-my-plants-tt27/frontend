@@ -136,7 +136,7 @@ export default function Register() {
                             regValue.pwConf ? regValue.pwConf === regValue.password ? null : <ErrorDiv>Passwords do not match</ErrorDiv> : null
                         }
                         <ButtonCont className="btn">
-                            <button disabled={disabled} className='button'>SIGN UP</button>
+                            <Button disabled={disabled} className='button'>SIGN UP</Button>
                             <LinkCont>
                                 <p> Already Have An Account?  </p>
                                 <a href='/Login'>  Sign in. </a>
@@ -174,6 +174,13 @@ const MainTitle = styled.div`
     width: 32.5%;
     margin: 1%;
     font-family: 'Raleway', sans-serif;
+
+    @media (max-width: 768px) {
+    width:52.5%;
+    }
+    @media (max-width: 375px) {
+    width:82.5%;
+    }
 `
 
 const FormCont = styled.div`
@@ -183,6 +190,13 @@ const FormCont = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @media (max-width: 768px) {
+    width:55%;
+    }
+    @media (max-width: 375px) {
+    width:86%;
+    }
     
 
     h1{
@@ -216,7 +230,17 @@ const Input = styled.input`
 
 
 const ButtonCont = styled.div`
-    display: flex;`
+    display: flex;
+    @media (max-width: 1024px) {
+        flex-wrap: wrap;
+    } 
+    @media (max-width: 768px) {
+    flex-wrap: wrap;
+    }  
+    @media (max-width: 375px) {
+    flex-wrap: wrap;
+    }       
+`   
     
     
 const LinkCont = styled.div`
@@ -247,8 +271,25 @@ const LinkCont = styled.div`
         letter-spacing: 0em;
         text-align: right;
         color: #224229;
+        @media (max-width: 768px) {
+            font-size: .75rem;
+        }
+        @media (max-width: 375px) {
+            white-space: nowrap
+        }
 
     }
+    `
+    const Button = styled.button`
+    @media (max-width: 1024px) {
+        min-width: 308px;
+    } 
+    @media (max-width: 768px) {
+        min-width: 363px;
+    } 
+    @media (max-width: 375px) {
+        min-width: 278px;
+    }       
     `
 
     const Form = styled.form`

@@ -66,7 +66,7 @@ export default function Login() {
                             error ? <ErrorDiv>{error}</ErrorDiv> : null
                         }
                         <ButtonCont className="btn">
-                            <button className='button'>LOGIN</button>
+                            <Button className='button buttonMobile'>LOGIN</Button>
                             <LinkCont>
                                 <a href='#'> Forgot Password  </a>
                                 <div> | </div>
@@ -106,6 +106,13 @@ const MainTitle = styled.div`
     width: 32.5%;
     margin: 1%;
     font-family: 'Raleway', sans-serif;
+
+    @media (max-width: 768px) {
+    width:52.5%;
+    }
+    @media (max-width: 375px) {
+    width:82.5%;
+    }
 `
 
 const FormCont = styled.div`
@@ -116,11 +123,17 @@ const FormCont = styled.div`
     flex-direction: column;
     align-items: center;
 
+    @media (max-width: 768px) {
+    width:55%;
+    }
+    @media (max-width: 375px) {
+    width:86%;
+    }
+
 
     h1{
         padding: 1%;
         margin-bottom: 3%;
-        
     }
     `
 
@@ -152,6 +165,7 @@ const ButtonCont = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    
 `
     
     
@@ -160,6 +174,7 @@ const LinkCont = styled.div`
     align-items:flex-end;
     justify-content: flex-end;
     min-width: 50%;
+    
     div{
         width: 2%;
         text-align: center;
@@ -169,16 +184,28 @@ const LinkCont = styled.div`
         text-decoration: none;
         color: #B1B7B3;
         font-family: Raleway;
-        font-size: 14px;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 700;
         line-height: 16px;
         letter-spacing: 0em;
         text-align: right;
         font-family: 'Raleway', sans-serif;
-
+        
+        @media (max-width: 768px) {
+            font-size: .75rem;
+        }
+        @media (max-width: 375px) {
+            white-space: nowrap
+        }
     }
     `
+
+const Button = styled.button`
+@media (max-width: 375px) {
+    min-width: 100px;
+}       
+`
 
 const ErrorDiv = styled.div`
     font-size: 14px;
