@@ -126,7 +126,7 @@ const MyPlants = () => {
     }
 
     useEffect(() => {
-        fetchPlants();
+        fetchPlants(); // eslint-disable-next-line
     }, [])
 
     return (
