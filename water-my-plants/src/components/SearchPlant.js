@@ -5,7 +5,6 @@ import closeButton from '../images/close.svg'
 
 //Component Import
 import AddPlant from './AddPlant'
-import PlantCard from './PlantCard'
 
 
 //Styling

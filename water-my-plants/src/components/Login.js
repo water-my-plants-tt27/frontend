@@ -1,5 +1,5 @@
 import React, {useState, useContext } from 'react'
-import {useHistory, Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
 

@@ -20,8 +20,46 @@ const DetailsDiv = styled.div`
 const WaterLightDetails = styled.div`
     margin-bottom: 15px;
 `
+const WaterDay = styled.span`
+    font-weight: 700;
+    font-style: italic;
+`
 
 const PlantCard = ({plant}) => {
+    
+    const secondDay = (day) => {
+       switch (day) {
+            case 'Monday':
+                return 'Thursday';
+            case 'Tuesday':
+                return 'Friday';
+            case 'Wednesday':
+                return 'Saturday';
+            case 'Thursday':
+                return 'Sunday';
+            case 'Friday':
+                return 'Monday';
+            case 'Saturday':
+                return 'Tuesday';
+            case 'Sunday':
+                return 'Wednesday';
+            default: 
+                return '';
+        }
+    }
+
+    const waterDays = () => {
+        if (plant.water_schedule === 'Once per week' || plant.water_schedule === 'Every 14 days') {
+            return (
+                <WaterDay> - {plant.week_day_name}</WaterDay>
+            )
+        } else if (plant.water_schedule === 'Twice per week') {
+            const day = secondDay(plant.week_day_name)
+            return (
+                <WaterDay> - {plant.week_day_name} / {day}</WaterDay>
+            )
+        }
+    }
 
     return (
         <CardContainer>
@@ -35,7 +73,7 @@ const PlantCard = ({plant}) => {
                 </div>
                 <WaterLightDetails>
                     <div className='needs'>Watering Schedule</div>
-                    <div className='needsDetails'>{plant.water_schedule}</div>
+                    <div className='needsDetails'>{plant.water_schedule}{waterDays()}</div>
                 </WaterLightDetails>
                 <WaterLightDetails>
                     <div className='needs'>Light</div>

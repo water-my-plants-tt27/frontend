@@ -12,6 +12,7 @@ import insta from '../images/instagram.png';
 import facebook from '../images/facebook.png';
 import twitter from '../images/twitter.png';
 
+
 // styling
 const MarketingContainer = styled.div`
     font-family: PT Serif;
