@@ -195,6 +195,10 @@ h1 {
   border: none;
   min-width: 180px;
   font-family: "Raleway", sans-serif;
+
+  @media (max-width: 375px) {
+    background-color: orange;
+  }
 }
 
 .button:disabled {
@@ -210,12 +214,12 @@ h1 {
 }
 
 .button:hover {
-	background-color: #224229;
+  background-color: #224229;
 }
 
 .button:focus {
-	outline: none;
-	background-color: #224229;
+  outline: none;
+  background-color: #224229;
 }
 
 .dayCheckbox {
@@ -229,8 +233,6 @@ h1 {
   color: #548a60;
 }
 
-
-.dayCheckbox input[type='radio']:checked+label {
-	color: #548A60 !important;
+.dayCheckbox input[type="radio"]:checked + label {
+  color: #548a60 !important;
 }
-
