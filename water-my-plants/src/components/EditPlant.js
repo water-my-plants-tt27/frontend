@@ -51,25 +51,13 @@ const EditButton = styled.button`
     border: none;
     min-width: 90px;
     font-family: "Raleway", sans-serif;
-  }
-`;
+`
 
-
-
-// 3 issues
-// edit opens all cards but when trying to put in the map I believe the jsx doesn't get read properly due to {}
-// does not rerender since it is still on current page
-// axios calls (delete says error but upon reload plant is gone, put gets back a message as res.data, also unsure should it be plant id or user id)
 
 const EditPlant = ({plantId, setEdit}) => {
     const [dayValue, setDayValue] = useState(null);
     const [plantToEdit, setPlantToEdit] = useState([]);
     const plantInfo = useContext(MyPlantDataContext);
-    
-    console.log('plantInfo from EP', plantInfo)
-    // console.log('plant from EP', plant)
-    console.log('dayValue', dayValue)
-    console.log('plantToEdit ', plantToEdit )
     
     useEffect (() => {
         const plantArr = plantInfo.plantInfo.myPlantData.filter(item => item.my_plant_id === plantId)  
@@ -145,7 +133,6 @@ const EditPlant = ({plantId, setEdit}) => {
         setEdit(false);
     }
 
-    console.log('PlantToEdit', plantToEdit)
     return (
         <AddPlantContainer>
             <PlantInfoContainer>
