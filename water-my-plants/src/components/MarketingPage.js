@@ -6,8 +6,7 @@ import styled from 'styled-components';
 // images
 import logo from '../images/logo.svg'
 import plantBanner from '../images/houseplants.jpeg'
-import watering from '../images/watering.jpeg'
-import plantcard from '../'
+
 
 // styling
 const MarketingContainer = styled.div`

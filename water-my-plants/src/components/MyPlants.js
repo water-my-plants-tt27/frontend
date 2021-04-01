@@ -123,7 +123,7 @@ const MyPlants = () => {
                         {
                             myPlantData.length !== 0 ?
                             myPlantData.map((plant) => {
-                                return <PlantCard key={plant.plant_id} plant={plant} />
+                                return <PlantCard key={plant.my_plant_id} plant={plant} />
                             })
                             : <p>Add some cool flora!</p>
                         }

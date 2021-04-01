@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {Route, Switch } from 'react-router-dom'
 import UserContext from './contexts/userContext'
 
@@ -35,7 +35,7 @@ function App() {
             </Route>
             <Route path='/editPlant'>
               <EditPlant />
-              </Route>
+            </Route>
             <Route path='/updateAccount'>
               <UpdateAccount />
             </Route> 
